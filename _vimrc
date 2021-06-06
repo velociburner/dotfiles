@@ -22,6 +22,19 @@
 "<PageDown>     Page-Down
 "<bar>          the '|' character, which otherwise needs to be escaped '\|'
 
+"===========Basic===========
+set nocompatible
+set directory=~/tmp
+
+set number
+"let mapleader = "<Space>"
+inoremap jk <Esc>
+
+nnoremap <Up> <Nop>
+nnoremap <Down> <Nop>
+nnoremap <Right> <Nop>
+nnoremap <Left> <Nop>
+
 "===========Plugins===========
 call plug#begin('~/vimfiles/plugged')
 Plug 'tpope/vim-surround'
@@ -30,8 +43,11 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'easymotion/vim-easymotion'
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'kiteco/vim-plugin'
-"Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-"Plug 'junegunn/fzf.vim'
+Plug 'nvie/vim-flake8'
+Plug 'vim-syntastic/syntastic'
+"Plug 'ycm-core/YouCompleteMe'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 "Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
@@ -44,7 +60,7 @@ call plug#end()
 "let g:AutoPairsFlyMode = 1
 "let g:AutoPairsShortcutBackInsert = '<M-b>'
 
-"===========Commentary===========
+"Commentary
 nmap <C-/> gcc
 
 "Darcula
@@ -90,13 +106,28 @@ nmap <leader>L <Plug>(easymotion-overwin-line)
 map  <leader>W <Plug>(easymotion-bd-w)
 nmap <leader>W <Plug>(easymotion-overwin-w)
 
-
 "Fuzzy finder
-"nnoremap <silent> <leader>f :Files<cr>
+nnoremap <silent> <leader>f :Files<cr>
 
 "CtrlP
 "let g:ctrlp_map = '<c-p>'
 "let g:ctrlp_cmd = 'CtrlP'
+
+"Flake8
+"let g:flake8_show_in_file=1  " show
+let g:flake8_quickfix_height=3
+
+"Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_loc_list_height = 3
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
 
 "Kite
 let g:kite_supported_languages = ['python', 'javascript', 'go']
@@ -104,20 +135,20 @@ let g:kite_supported_languages = ['python', 'javascript', 'go']
 "set laststatus=2  " always display the status line
 "let g:kite_tab_complete=1
 
-"===========Basic===========
-set nu
-"let mapleader = "<Space>"
-inoremap jk <Esc>
-
 "===========Quick save and quit===========
 nnoremap <leader>w :w<cr>
 nnoremap <leader>q :q<cr>
 nnoremap <leader><leader>q :wq<cr>
 
 "===========Autocomplete===========
+"Command mode
 set wildmenu
 " set wildmode=longest:full,full
 set wildmode=longest:list,full
+
+"Insert mode
+filetype plugin on
+set omnifunc=syntaxcomplete#Complete
 
 "===========Spell check===========
 "set spell
@@ -197,8 +228,8 @@ vnoremap <C-S-j> :m'>+<cr>`<my`>mzgv`yo`z
 vnoremap <C-S-k> :m'<-2<cr>`>my`<mzgv`yo`z
 
 "===========Add lines===========
-nnoremap <Space>o o<Esc>k
-nnoremap <Space>O O<Esc>j
+nnoremap <Space>o mzo<Esc>k`z
+nnoremap <Space>O mzO<Esc>j`z
 inoremap <S-CR> <Esc>o
 
 "===========Search options===========
@@ -226,6 +257,7 @@ set gdefault
 "augroup end
 
 set foldmethod=indent
+set foldlevel=99
 set foldnestmax=1
 set nofoldenable
 
@@ -276,7 +308,7 @@ let g:netrw_winsize = 39
 
 "au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 set textwidth=119
-set colorcolumn=120
+set colorcolumn=80
 
 inoremap <leader>main if __name__=='__main__':<cr>
 
