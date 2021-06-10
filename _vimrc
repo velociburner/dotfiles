@@ -46,6 +46,7 @@ Plug 'kiteco/vim-plugin'
 Plug 'nvie/vim-flake8'
 Plug 'vim-syntastic/syntastic'
 "Plug 'ycm-core/YouCompleteMe'
+"Plug 'davidhalter/jedi-vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 "Plug 'ctrlpvim/ctrlp.vim'
@@ -54,6 +55,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'powerline/fonts'
 Plug 'doums/darcula'
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 "Auto-pairs
@@ -73,13 +75,36 @@ let g:airline_theme='solarized'
 let g:airline_solarized_bg='dark'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
-"let g:airline_powerline_fonts = 1
+" let g:airline_powerline_fonts = 1
+
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
 
 " unicode symbols
 let g:airline_left_sep = '»'
-"let g:airline_left_sep = '▶'
+let g:airline_left_sep = '▶'
 let g:airline_right_sep = '«'
-"let g:airline_right_sep = '◀'
+let g:airline_right_sep = '◀'
+let g:airline_symbols.linenr = '␊'
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.paste = '∥'
+let g:airline_symbols.whitespace = 'Ξ'
+
+" set guifont=Source\ Code\ Pro\ for\ Powerline
+
+" " powerline symbols
+" " let g:airline_left_sep = ''
+" " let g:airline_left_alt_sep = ''
+" " let g:airline_right_sep = ''
+" " let g:airline_right_alt_sep = ''
+" " let g:airline_symbols.branch = ''
+" " let g:airline_symbols.readonly = ''
+" " let g:airline_symbols.linenr = ''
 
 "Easymotion
 let g:EasyMotion_smartcase = 1
@@ -108,6 +133,7 @@ nmap <leader>W <Plug>(easymotion-overwin-w)
 
 "Fuzzy finder
 nnoremap <silent> <leader>f :Files<cr>
+let $PATH = "C:\Program\ Files\Git\usr\bin;" . $PATH
 
 "CtrlP
 "let g:ctrlp_map = '<c-p>'
@@ -130,9 +156,10 @@ let g:syntastic_check_on_wq = 0
 
 
 "Kite
-let g:kite_supported_languages = ['python', 'javascript', 'go']
+"let g:kite_supported_languages = ['python', 'javascript', 'go']
 "set statusline=%<%f\ %h%m%r%{kite#statusline()}%=%-14.(%l,%c%V%)\ %P
 "set laststatus=2  " always display the status line
+"let g:kite_auto_complete=1
 "let g:kite_tab_complete=1
 
 "===========Quick save and quit===========
@@ -145,6 +172,9 @@ nnoremap <leader><leader>q :wq<cr>
 set wildmenu
 " set wildmode=longest:full,full
 set wildmode=longest:list,full
+
+"Insert mode
+set completeopt=menu,preview
 
 "Insert mode
 filetype plugin on
@@ -274,6 +304,10 @@ inoremap <C-J> <Esc><C-W><C-J>
 inoremap <C-K> <Esc><C-W><C-K>
 inoremap <C-L> <Esc><C-W><C-L>
 inoremap <C-H> <Esc><C-W><C-H>
+tnoremap <C-J> <C-W><C-J>
+tnoremap <C-K> <C-W><C-K>
+tnoremap <C-L> <C-W><C-L>
+tnoremap <C-H> <C-W><C-H>
 
 nnoremap <leader>r <C-W>R
 nnoremap <C-=> <C-W>2>
@@ -281,9 +315,8 @@ nnoremap <C-_> <C-W>2<
 inoremap <C-=> <Esc><C-W>2>a
 inoremap <C-_> <Esc><C-W>2<a
 
-nnoremap <leader>v :vs ~/_vimrc<cr>
 nnoremap <leader><leader>v :tabnew ~/_vimrc<cr>
-nnoremap <leader>t :vert term<cr>
+nnoremap <silent> <leader>t :vert term<cr>
 
 "===========Buffers===========
 nnoremap <silent> <leader>b :bn<cr>
@@ -295,6 +328,8 @@ nnoremap <silent> <leader>B :bp<cr>
 let g:netrw_liststyle = 3
 let g:netrw_browse_split = 4
 let g:netrw_winsize = 39
+
+nnoremap <leader>v :Vex<cr>
 
 "===========PEP 8===========
 "au BufNewFile,BufRead *.py
@@ -321,8 +356,12 @@ set shiftwidth=4
 set smarttab
 set tabstop=4
 
+"Whitespace
+set listchars=trail:«
+set list
+
 "===========UTF-8===========
 set encoding=utf-8
 
 "===========Project Euler===========
-cnoremap euler read ~/OneDrive/Desktop/Project\ Euler/template.txt
+cabbrev euler read ~/OneDrive/Desktop/Project\ Euler/template.txt
