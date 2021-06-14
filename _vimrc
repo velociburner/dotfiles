@@ -25,10 +25,14 @@
 "===========Basic===========
 set nocompatible
 set directory=~/tmp
+"let &pythonthreehome = 'C:Users\joshb\AppData\Local\Programs\Python\Python38'
+let &pythonthreedll = 'C:Users\joshb\AppData\Local\Programs\Python\Python38\python38.dll'
+" set pythonthreehome = C:\Users\joshb\AppData\Local\Programs\Python\Python38
+" set pythonthreedll = C:\Users\joshb\AppData\Local\Programs\Python\Python38\python38.dll
 
 set number
 "let mapleader = "<Space>"
-inoremap jk <Esc>
+"inoremap jk <Esc>
 
 nnoremap <Up> <Nop>
 nnoremap <Down> <Nop>
@@ -37,25 +41,45 @@ nnoremap <Left> <Nop>
 
 "===========Plugins===========
 call plug#begin('~/vimfiles/plugged')
+
+"---Making my life easier---
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'jiangmiao/auto-pairs'
 Plug 'easymotion/vim-easymotion'
 Plug 'vim-scripts/ReplaceWithRegister'
-Plug 'kiteco/vim-plugin'
+
+"---Linting---
 Plug 'nvie/vim-flake8'
 Plug 'vim-syntastic/syntastic'
+
+"---Snippets---
+Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'tomtom/tlib_vim'
+Plug 'garbas/vim-snipmate'
+Plug 'honza/vim-snippets'
+
+"---Autocomplete---
+"Plug 'kiteco/vim-plugin'
 "Plug 'ycm-core/YouCompleteMe'
 "Plug 'davidhalter/jedi-vim'
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+"---Fuzzy finder---
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 "Plug 'ctrlpvim/ctrlp.vim'
+
+"---Git---
 Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+
+"---Style---
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'powerline/fonts'
 Plug 'doums/darcula'
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 call plug#end()
 
 "Auto-pairs
@@ -63,18 +87,21 @@ call plug#end()
 "let g:AutoPairsShortcutBackInsert = '<M-b>'
 
 "Commentary
-nmap <C-/> gcc
+nmap <C-/> mzgcc`zll
+imap <C-/> <Esc>mzgcc`zlla
 
 "Darcula
 set t_Co=256
 set termguicolors
 colorscheme darcula
+"highlight Normal guibg=NONE ctermbg=NONE
 
 "Airline
 let g:airline_theme='solarized'
 let g:airline_solarized_bg='dark'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline#extensions#syntastic#enabled = 1
 " let g:airline_powerline_fonts = 1
 
 if !exists('g:airline_symbols')
@@ -82,13 +109,13 @@ if !exists('g:airline_symbols')
 endif
 
 " unicode symbols
-let g:airline_left_sep = '»'
-let g:airline_left_sep = '▶'
-let g:airline_right_sep = '«'
-let g:airline_right_sep = '◀'
+" let g:airline_left_sep = '»'
+" let g:airline_left_sep = '▶'
+" let g:airline_right_sep = '«'
+" let g:airline_right_sep = '◀'
 let g:airline_symbols.linenr = '␊'
-let g:airline_symbols.linenr = '␤'
-let g:airline_symbols.linenr = '¶'
+" let g:airline_symbols.linenr = '␤'
+" let g:airline_symbols.linenr = '¶'
 let g:airline_symbols.branch = '⎇'
 let g:airline_symbols.paste = 'ρ'
 let g:airline_symbols.paste = 'Þ'
@@ -144,16 +171,29 @@ let $PATH = "C:\Program\ Files\Git\usr\bin;" . $PATH
 let g:flake8_quickfix_height=3
 
 "Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
 
 let g:syntastic_loc_list_height = 3
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_aggregate_errors = 1
 
+"SnipMate
+" let g:snipMate = { 'snippet_version' : 1 }
+
+"Gitgutter
+set updatetime=100
+nmap ]h <Plug>(GitGutterNextHunk)
+nmap [h <Plug>(GitGutterPrevHunk)
+
+omap ih <Plug>(GitGutterTextObjectInnerPending)
+omap ah <Plug>(GitGutterTextObjectOuterPending)
+xmap ih <Plug>(GitGutterTextObjectInnerVisual)
+xmap ah <Plug>(GitGutterTextObjectOuterVisual)
 
 "Kite
 "let g:kite_supported_languages = ['python', 'javascript', 'go']
@@ -196,7 +236,7 @@ let &t_EI.="\e[1 q" "EI = NORMAL mode (ELSE)
 
 "Cursor settings:
 "  1 -> blinking block
-"  2 -> solid block 
+"  2 -> solid block
 "  3 -> blinking underscore
 "  4 -> solid underscore
 "  5 -> blinking vertical bar
@@ -310,10 +350,16 @@ tnoremap <C-L> <C-W><C-L>
 tnoremap <C-H> <C-W><C-H>
 
 nnoremap <leader>r <C-W>R
+
 nnoremap <C-=> <C-W>2>
 nnoremap <C-_> <C-W>2<
 inoremap <C-=> <Esc><C-W>2>a
 inoremap <C-_> <Esc><C-W>2<a
+
+nnoremap <silent> <C-S-+> :resize +2<cr>
+nnoremap <silent> <C-S-_> :resize -2<cr>
+inoremap <silent> <C-S-+> <Esc>:resize +2<cr>a
+inoremap <silent> <C-S-_> <Esc>:resize -2<cr>a
 
 nnoremap <leader><leader>v :tabnew ~/_vimrc<cr>
 nnoremap <silent> <leader>t :vert term<cr>
@@ -332,29 +378,21 @@ let g:netrw_winsize = 39
 nnoremap <leader>v :Vex<cr>
 
 "===========PEP 8===========
-"au BufNewFile,BufRead *.py
-"    \ set tabstop=4
-"    \ set softtabstop=4
-"    \ set shiftwidth=4
-"    \ set textwidth=79
-"    \ set expandtab
-"    \ set autoindent
-"    \ set fileformat=unix
+au BufNewFile,BufRead *.py
+    \ setlocal tabstop=4 |
+    \ setlocal softtabstop=4 |
+    \ setlocal shiftwidth=4 |
+    \ setlocal textwidth=79 |
+    \ setlocal expandtab |
+    \ setlocal autoindent |
+    \ setlocal fileformat=unix
 
 "au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+
 set textwidth=119
 set colorcolumn=80
-
-inoremap <leader>main if __name__=='__main__':<cr>
-
-"===========Indentation===========
-set autoindent
-set expandtab
-"set filetype indent on
 set shiftround
-set shiftwidth=4
 set smarttab
-set tabstop=4
 
 "Whitespace
 set listchars=trail:«
