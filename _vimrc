@@ -22,9 +22,12 @@
 "<PageDown>     Page-Down
 "<bar>          the '|' character, which otherwise needs to be escaped '\|'
 
+"===========UTF-8===========
+set encoding=utf-8
+
 "===========Basic===========
 set nocompatible
-set directory=~/tmp
+set directory=~/swapfiles
 "let &pythonthreehome = 'C:Users\joshb\AppData\Local\Programs\Python\Python38'
 let &pythonthreedll = 'C:Users\joshb\AppData\Local\Programs\Python\Python38\python38.dll'
 " set pythonthreehome = C:\Users\joshb\AppData\Local\Programs\Python\Python38
@@ -34,13 +37,25 @@ set number
 "let mapleader = "<Space>"
 "inoremap jk <Esc>
 
+" WSL yank support
+set clipboard=unnamedplus
+
+let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path according to your mount point
+if executable(s:clip)
+    augroup WSLYank
+        autocmd!
+        autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:clip, @0) | endif
+    augroup END
+endif
+
 nnoremap <Up> <Nop>
 nnoremap <Down> <Nop>
 nnoremap <Right> <Nop>
 nnoremap <Left> <Nop>
 
 "===========Plugins===========
-call plug#begin('~/vimfiles/plugged')
+" call plug#begin('~/vimfiles/plugged')
+call plug#begin('~/.vim/plugged')
 
 "---Making my life easier---
 Plug 'tpope/vim-surround'
@@ -58,6 +73,12 @@ Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
 Plug 'garbas/vim-snipmate'
 Plug 'honza/vim-snippets'
+
+"---Tags---
+Plug 'ludovicchabant/vim-gutentags'
+
+"---VimTex---
+Plug 'lervag/vimtex'
 
 "---Autocomplete---
 "Plug 'kiteco/vim-plugin'
@@ -79,6 +100,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'powerline/fonts'
 Plug 'doums/darcula'
+Plug 'drewtempelmeyer/palenight.vim'
 
 call plug#end()
 
@@ -90,11 +112,18 @@ call plug#end()
 nmap <C-/> mzgcc`zll
 imap <C-/> <Esc>mzgcc`zlla
 
+"VimTex
+nnoremap <Space><Space> a<Space><Esc>h
+
 "Darcula
 set t_Co=256
 set termguicolors
 colorscheme darcula
 "highlight Normal guibg=NONE ctermbg=NONE
+
+"Palenight
+autocmd BufRead *.tex colorscheme palenight
+
 
 "Airline
 let g:airline_theme='solarized'
@@ -113,13 +142,23 @@ endif
 " let g:airline_left_sep = '▶'
 " let g:airline_right_sep = '«'
 " let g:airline_right_sep = '◀'
-let g:airline_symbols.linenr = '␊'
-" let g:airline_symbols.linenr = '␤'
+" let g:airline_symbols.colnr = ' ㏇:'
+" let g:airline_symbols.colnr = ' ℅:'
+let g:airline_symbols.colnr = ' Col:'
+" let g:airline_symbols.crypt = '🔒'
+" let g:airline_symbols.linenr = '☰'
+" let g:airline_symbols.linenr = ' ␊:'
+" let g:airline_symbols.linenr = ' ␤:'
 " let g:airline_symbols.linenr = '¶'
-let g:airline_symbols.branch = '⎇'
-let g:airline_symbols.paste = 'ρ'
-let g:airline_symbols.paste = 'Þ'
-let g:airline_symbols.paste = '∥'
+let g:airline_symbols.linenr = ' Ln:'
+let g:airline_symbols.maxlinenr = ''
+" let g:airline_symbols.maxlinenr = '㏑'
+" let g:airline_symbols.branch = '⎇'
+" let g:airline_symbols.paste = 'ρ'
+" let g:airline_symbols.paste = 'Þ'
+" let g:airline_symbols.paste = '∥'
+" let g:airline_symbols.spell = 'Ꞩ'
+let g:airline_symbols.notexists = 'Ɇ'
 let g:airline_symbols.whitespace = 'Ξ'
 
 " set guifont=Source\ Code\ Pro\ for\ Powerline
@@ -162,10 +201,6 @@ nmap <leader>W <Plug>(easymotion-overwin-w)
 nnoremap <silent> <leader>f :Files<cr>
 let $PATH = "C:\Program\ Files\Git\usr\bin;" . $PATH
 
-"CtrlP
-"let g:ctrlp_map = '<c-p>'
-"let g:ctrlp_cmd = 'CtrlP'
-
 "Flake8
 "let g:flake8_show_in_file=1  " show
 let g:flake8_quickfix_height=3
@@ -178,12 +213,15 @@ let g:flake8_quickfix_height=3
 let g:syntastic_loc_list_height = 3
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_aggregate_errors = 1
 
 "SnipMate
-" let g:snipMate = { 'snippet_version' : 1 }
+let g:snipMate = { 'snippet_version' : 1 }
+
+"Gutentags
+" let g:gutentags_ctags_executable = 'mnt/c/Users/joshb/Downloads/ctags-p5.9.20210613.0-x64/ctags.exe'
 
 "Gitgutter
 set updatetime=100
@@ -284,12 +322,14 @@ nnoremap <leader><leader>t :tab split<cr>
 "===========Change inner===========
 nnoremap ci( f(ci(
 nnoremap ci) F)ci)
-"nnoremap cib f(cib
+
 nnoremap ci{ f{ci{
 nnoremap ci} F}ci}
-"nnoremap ciB f{ciB
+
 nnoremap ci[ f[ci[
 nnoremap ci] F]ci]
+nnoremap cin ci]
+nnoremap can ca]
 
 "===========Move lines===========
 nnoremap <C-S-j> mz:m+<cr>`z
@@ -351,17 +391,21 @@ tnoremap <C-H> <C-W><C-H>
 
 nnoremap <leader>r <C-W>R
 
-nnoremap <C-=> <C-W>2>
-nnoremap <C-_> <C-W>2<
-inoremap <C-=> <Esc><C-W>2>a
-inoremap <C-_> <Esc><C-W>2<a
+" nnoremap <C-=> <C-W>2>
+" nnoremap <C-_> <C-W>2<
+" inoremap <C-=> <Esc><C-W>2>a
+" inoremap <C-_> <Esc><C-W>2<a
+nnoremap <Right> <C-W>2>
+nnoremap <Left> <C-W>2<
 
-nnoremap <silent> <C-S-+> :resize +2<cr>
-nnoremap <silent> <C-S-_> :resize -2<cr>
-inoremap <silent> <C-S-+> <Esc>:resize +2<cr>a
-inoremap <silent> <C-S-_> <Esc>:resize -2<cr>a
+" nnoremap <silent> <C-S-+> :resize +2<cr>
+" nnoremap <silent> <C-S-_> :resize -2<cr>
+" inoremap <silent> <C-S-+> <Esc>:resize +2<cr>a
+" inoremap <silent> <C-S-_> <Esc>:resize -2<cr>a
+nnoremap <silent> <Up> :resize +2<cr>
+nnoremap <silent> <Down> :resize -2<cr>
 
-nnoremap <leader><leader>v :tabnew ~/_vimrc<cr>
+nnoremap <leader><leader>v :tabnew ~/.vimrc<cr>
 nnoremap <silent> <leader>t :vert term<cr>
 
 "===========Buffers===========
@@ -377,29 +421,25 @@ let g:netrw_winsize = 39
 
 nnoremap <leader>v :Vex<cr>
 
-"===========PEP 8===========
-au BufNewFile,BufRead *.py
-    \ setlocal tabstop=4 |
-    \ setlocal softtabstop=4 |
-    \ setlocal shiftwidth=4 |
-    \ setlocal textwidth=79 |
-    \ setlocal expandtab |
-    \ setlocal autoindent |
-    \ setlocal fileformat=unix
-
-"au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
-
+"===========Indentation===========
 set textwidth=119
 set colorcolumn=80
 set shiftround
 set smarttab
+set expandtab
+set autoindent
+
+"LaTeX
+au FileType tex set tabstop=2 softtabstop=2 shiftwidth=2
+
+"PEP 8
+au FileType python set tabstop=4 softtabstop=4 shiftwidth=4 textwidth=79
+
+"au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
 "Whitespace
 set listchars=trail:«
 set list
 
-"===========UTF-8===========
-set encoding=utf-8
-
 "===========Project Euler===========
-cabbrev euler read ~/OneDrive/Desktop/Project\ Euler/template.txt
+cabbrev euler -1read ~/OneDrive/Desktop/Project\ Euler/template.txt
