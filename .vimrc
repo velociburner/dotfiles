@@ -1,5 +1,10 @@
 "Config options: https://www.shortcutfoo.com/blog/top-50-vim-configuration-options/
 
+"Ctrl-I      Tab
+"Ctrl-[      Esc
+"Ctrl-M      Enter
+"Ctrl-H      Backspace
+
 "Cheat sheet: https://devhints.io/vimscript
 "<BS>           Backspace
 "<Tab>          Tab
@@ -28,12 +33,10 @@ set encoding=utf-8
 "===========Basic===========
 set nocompatible
 set directory=~/swapfiles
-"let &pythonthreehome = 'C:Users\joshb\AppData\Local\Programs\Python\Python38'
-let &pythonthreedll = 'C:Users\joshb\AppData\Local\Programs\Python\Python38\python38.dll'
-" set pythonthreehome = C:\Users\joshb\AppData\Local\Programs\Python\Python38
-" set pythonthreedll = C:\Users\joshb\AppData\Local\Programs\Python\Python38\python38.dll
-
 set number
+set noerrorbells
+set visualbell
+set ttimeoutlen=5
 "let mapleader = "<Space>"
 "inoremap jk <Esc>
 
@@ -63,15 +66,17 @@ Plug 'tpope/vim-commentary'
 Plug 'jiangmiao/auto-pairs'
 Plug 'easymotion/vim-easymotion'
 Plug 'vim-scripts/ReplaceWithRegister'
+Plug 'preservim/nerdtree'
 
 "---Linting---
 Plug 'nvie/vim-flake8'
-Plug 'vim-syntastic/syntastic'
+Plug 'vim-syntastic/syntastic' " must also install checkers separately: flake8, lacheck, etc.
 
 "---Snippets---
-Plug 'MarcWeber/vim-addon-mw-utils'
-Plug 'tomtom/tlib_vim'
-Plug 'garbas/vim-snipmate'
+" Plug 'MarcWeber/vim-addon-mw-utils'
+" Plug 'tomtom/tlib_vim'
+" Plug 'garbas/vim-snipmate'
+Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
 "---Tags---
@@ -81,7 +86,7 @@ Plug 'ludovicchabant/vim-gutentags'
 Plug 'lervag/vimtex'
 
 "---Autocomplete---
-"Plug 'kiteco/vim-plugin'
+Plug 'vim-scripts/AutoComplPop'
 "Plug 'ycm-core/YouCompleteMe'
 "Plug 'davidhalter/jedi-vim'
 "Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -103,6 +108,14 @@ Plug 'doums/darcula'
 Plug 'drewtempelmeyer/palenight.vim'
 
 call plug#end()
+
+"NERDtree
+nnoremap <leader>nn :NERDTree<cr>
+nnoremap <leader>nt :NERDTreeToggle<cr>
+nnoremap <leader>nm :NERDTreeMirror<cr>
+
+let NERDTreeNaturalSort = 1
+let NERDTreeWinSize = 39
 
 "Auto-pairs
 "let g:AutoPairsFlyMode = 1
@@ -199,7 +212,6 @@ nmap <leader>W <Plug>(easymotion-overwin-w)
 
 "Fuzzy finder
 nnoremap <silent> <leader>f :Files<cr>
-let $PATH = "C:\Program\ Files\Git\usr\bin;" . $PATH
 
 "Flake8
 "let g:flake8_show_in_file=1  " show
@@ -213,15 +225,23 @@ let g:flake8_quickfix_height=3
 let g:syntastic_loc_list_height = 3
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_aggregate_errors = 1
+let syntastic_warning_symbol = "W>"
 
 "SnipMate
-let g:snipMate = { 'snippet_version' : 1 }
+" let g:snipMate = { 'snippet_version' : 1 }
+
+"Ultisnips
+" let g: UltiSnipsEditSplit="vertical"
 
 "Gutentags
 " let g:gutentags_ctags_executable = 'mnt/c/Users/joshb/Downloads/ctags-p5.9.20210613.0-x64/ctags.exe'
+
+"AutoComplPop
+set shortmess+=c
+let g:acp_completeOption = '.,w,b,u,t'
+" let g:acp_behaviorKeywordLength = 1
 
 "Gitgutter
 set updatetime=100
@@ -232,13 +252,6 @@ omap ih <Plug>(GitGutterTextObjectInnerPending)
 omap ah <Plug>(GitGutterTextObjectOuterPending)
 xmap ih <Plug>(GitGutterTextObjectInnerVisual)
 xmap ah <Plug>(GitGutterTextObjectOuterVisual)
-
-"Kite
-"let g:kite_supported_languages = ['python', 'javascript', 'go']
-"set statusline=%<%f\ %h%m%r%{kite#statusline()}%=%-14.(%l,%c%V%)\ %P
-"set laststatus=2  " always display the status line
-"let g:kite_auto_complete=1
-"let g:kite_tab_complete=1
 
 "===========Quick save and quit===========
 nnoremap <leader>w :w<cr>
@@ -430,10 +443,10 @@ set expandtab
 set autoindent
 
 "LaTeX
-au FileType tex set tabstop=2 softtabstop=2 shiftwidth=2
+au FileType tex setlocal tabstop=2 softtabstop=2 shiftwidth=2
 
 "PEP 8
-au FileType python set tabstop=4 softtabstop=4 shiftwidth=4 textwidth=79
+au FileType python setlocal tabstop=4 softtabstop=4 shiftwidth=4 textwidth=79
 
 "au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
@@ -441,5 +454,9 @@ au FileType python set tabstop=4 softtabstop=4 shiftwidth=4 textwidth=79
 set listchars=trail:«
 set list
 
+"===========Import statements===========
+"python
+nnoremap <leader>i mz"zyiwgg/^$<cr>oimport <Esc>"zp`z:noh<cr>
+
 "===========Project Euler===========
-cabbrev euler -1read ~/OneDrive/Desktop/Project\ Euler/template.txt
+cabbrev euler -1read template.txt
