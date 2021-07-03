@@ -27,11 +27,9 @@
 "<PageDown>     Page-Down
 "<bar>          the '|' character, which otherwise needs to be escaped '\|'
 
-"===========UTF-8===========
-set encoding=utf-8
-
 "===========Basic===========
 set nocompatible
+set encoding=utf-8
 set directory=~/swapfiles
 set number
 set noerrorbells
@@ -57,7 +55,6 @@ nnoremap <Right> <Nop>
 nnoremap <Left> <Nop>
 
 "===========Plugins===========
-" call plug#begin('~/vimfiles/plugged')
 call plug#begin('~/.vim/plugged')
 
 "---Making my life easier---
@@ -166,7 +163,7 @@ let g:airline_symbols.colnr = ' Col:'
 let g:airline_symbols.linenr = ' Ln:'
 let g:airline_symbols.maxlinenr = ''
 " let g:airline_symbols.maxlinenr = '㏑'
-" let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.branch = ''
 " let g:airline_symbols.paste = 'ρ'
 " let g:airline_symbols.paste = 'Þ'
 " let g:airline_symbols.paste = '∥'
@@ -256,13 +253,13 @@ xmap ah <Plug>(GitGutterTextObjectOuterVisual)
 "===========Quick save and quit===========
 nnoremap <leader>w :w<cr>
 nnoremap <leader>q :q<cr>
-nnoremap <leader><leader>q :wq<cr>
+nnoremap <leader>x :x<cr>
 
 "===========Autocomplete===========
 "Command mode
 set wildmenu
 " set wildmode=longest:full,full
-set wildmode=longest:list,full
+set wildmode=list:longest,full
 
 "Insert mode
 set completeopt=menu,preview
@@ -332,17 +329,21 @@ endfunction
 nnoremap gn :tabnew<cr>
 nnoremap <leader><leader>t :tab split<cr>
 
-"===========Change inner===========
-nnoremap ci( f(ci(
-nnoremap ci) F)ci)
+"===========Bracket objects===========
+onoremap inb :<C-u>normal! f(vi(<cr>
+onoremap ilb :<C-u>normal! F)vi(<cr>
+onoremap anb :<C-u>normal! f(va(<cr>
+onoremap alb :<C-u>normal! F)va(<cr>
 
-nnoremap ci{ f{ci{
-nnoremap ci} F}ci}
+onoremap inB :<C-u>normal! f{vi{<cr>
+onoremap ilB :<C-u>normal! F}vi{<cr>
+onoremap anB :<C-u>normal! f{va{<cr>
+onoremap alB :<C-u>normal! F}va{<cr>
 
-nnoremap ci[ f[ci[
-nnoremap ci] F]ci]
-nnoremap cin ci]
-nnoremap can ca]
+onoremap in[ :<C-u>normal! f[vi[<cr>
+onoremap il[ :<C-u>normal! F[vi[<cr>
+onoremap an[ :<C-u>normal! f[va[<cr>
+onoremap al[ :<C-u>normal! F[va[<cr>
 
 "===========Move lines===========
 nnoremap <C-S-j> mz:m+<cr>`z
@@ -356,11 +357,17 @@ nnoremap <Space>O mzO<Esc>j`z
 inoremap <S-CR> <Esc>o
 
 "===========Search options===========
-set hlsearch
-nnoremap <silent> <leader>z :noh<cr>
+nnoremap <silent> <Esc> :noh<cr><Esc>
 set ignorecase
-set incsearch
 set smartcase
+set incsearch
+
+" highlight only while searching
+augroup IncsearchHighlight
+  autocmd!
+  autocmd CmdlineEnter /,\? :set hlsearch
+  autocmd CmdlineLeave /,\? :set nohlsearch
+augroup END
 
 "===========Find and replace============
 set gdefault
@@ -422,8 +429,14 @@ nnoremap <leader><leader>v :tabnew ~/.vimrc<cr>
 nnoremap <silent> <leader>t :vert term<cr>
 
 "===========Buffers===========
-nnoremap <silent> <leader>b :bn<cr>
-nnoremap <silent> <leader>B :bp<cr>
+nnoremap <silent> ]b :bnext<cr>
+nnoremap <silent> [b :bprevious<cr>
+tnoremap <silent> ]b <C-W>:bnext<cr>
+tnoremap <silent> [b <C-W>:bprevious<cr>
+
+"===========QuickFix List===========
+nnoremap <silent> ]c :cnext<cr>
+nnoremap <silent> [c :cprevious<cr>
 
 "===========Netrw===========
 "https://shapeshed.com/vim-netrw/
@@ -442,11 +455,12 @@ set smarttab
 set expandtab
 set autoindent
 
-"LaTeX
-au FileType tex setlocal tabstop=2 softtabstop=2 shiftwidth=2
-
-"PEP 8
-au FileType python setlocal tabstop=4 softtabstop=4 shiftwidth=4 textwidth=79
+augroup Indentation
+    autocmd!
+    autocmd FileType tex setlocal tabstop=2 softtabstop=2 shiftwidth=2 textwidth=119
+    autocmd FileType python setlocal tabstop=4 softtabstop=4 shiftwidth=4 textwidth=79
+    autocmd FileType vim,sh setlocal shiftwidth=4
+augroup END
 
 "au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 
@@ -456,7 +470,15 @@ set list
 
 "===========Import statements===========
 "python
-nnoremap <leader>i mz"zyiwgg/^$<cr>oimport <Esc>"zp`z:noh<cr>
+function! Import()
+    if &filetype ==# "python"
+        execute "normal! mz\"zyiwgg/^$\<cr>oimport \<Esc>\"zp`z"
+    else
+        echo "Not a supported filetype"
+    endif
+endfunction
+
+nnoremap <leader>i :<C-u>call Import()<cr>
 
 "===========Project Euler===========
 cabbrev euler -1read template.txt
