@@ -1,3 +1,4 @@
+"===========Resources=========== {{{
 "Config options: https://www.shortcutfoo.com/blog/top-50-vim-configuration-options/
 
 "Ctrl-I      Tab
@@ -26,8 +27,9 @@
 "<PageUp>       Page-Up
 "<PageDown>     Page-Down
 "<bar>          the '|' character, which otherwise needs to be escaped '\|'
+" }}}
 
-"===========Basic===========
+"===========Basic=========== {{{
 set nocompatible
 set encoding=utf-8
 set directory=~/swapfiles
@@ -48,19 +50,16 @@ if executable(s:clip)
         autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:clip, @0) | endif
     augroup END
 endif
+" }}}
 
-nnoremap <Up> <Nop>
-nnoremap <Down> <Nop>
-nnoremap <Right> <Nop>
-nnoremap <Left> <Nop>
-
-"===========Plugins===========
+"===========Plugins=========== {{{
 call plug#begin('~/.vim/plugged')
 
 "---Making my life easier---
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'jiangmiao/auto-pairs'
+Plug 'michaeljsmith/vim-indent-object'
 Plug 'easymotion/vim-easymotion'
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'preservim/nerdtree'
@@ -77,7 +76,7 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
 "---Tags---
-Plug 'ludovicchabant/vim-gutentags'
+Plug 'ludovicchabant/vim-gutentags' " must also install ctags separately
 
 "---VimTex---
 Plug 'lervag/vimtex'
@@ -105,37 +104,43 @@ Plug 'doums/darcula'
 Plug 'drewtempelmeyer/palenight.vim'
 
 call plug#end()
+" }}}
 
-"NERDtree
+"NERDtree {{{
 nnoremap <leader>nn :NERDTree<cr>
 nnoremap <leader>nt :NERDTreeToggle<cr>
 nnoremap <leader>nm :NERDTreeMirror<cr>
 
 let NERDTreeNaturalSort = 1
 let NERDTreeWinSize = 39
+" }}}
 
-"Auto-pairs
+"Auto-pairs {{{
 "let g:AutoPairsFlyMode = 1
 "let g:AutoPairsShortcutBackInsert = '<M-b>'
+" }}}
 
-"Commentary
+"Commentary {{{
 nmap <C-/> mzgcc`zll
 imap <C-/> <Esc>mzgcc`zlla
+" }}}
 
-"VimTex
+"VimTex {{{
 nnoremap <Space><Space> a<Space><Esc>h
+" }}}
 
-"Darcula
+"Darcula {{{
 set t_Co=256
 set termguicolors
 colorscheme darcula
 "highlight Normal guibg=NONE ctermbg=NONE
+" }}}
 
-"Palenight
+"Palenight {{{
 autocmd BufRead *.tex colorscheme palenight
+" }}}
 
-
-"Airline
+"Airline {{{
 let g:airline_theme='solarized'
 let g:airline_solarized_bg='dark'
 let g:airline#extensions#tabline#enabled = 1
@@ -181,8 +186,9 @@ let g:airline_symbols.whitespace = 'Ξ'
 " " let g:airline_symbols.branch = ''
 " " let g:airline_symbols.readonly = ''
 " " let g:airline_symbols.linenr = ''
+" }}}
 
-"Easymotion
+"Easymotion {{{
 let g:EasyMotion_smartcase = 1
 
 " Gif config
@@ -206,15 +212,18 @@ nmap <leader>L <Plug>(easymotion-overwin-line)
 " Move to word
 map  <leader>W <Plug>(easymotion-bd-w)
 nmap <leader>W <Plug>(easymotion-overwin-w)
+" }}}
 
-"Fuzzy finder
+"Fuzzy finder {{{
 nnoremap <silent> <leader>f :Files<cr>
+" }}}
 
-"Flake8
+"Flake8 {{{
 "let g:flake8_show_in_file=1  " show
 let g:flake8_quickfix_height=3
+" }}}
 
-"Syntastic
+"Syntastic {{{
 " set statusline+=%#warningmsg#
 " set statusline+=%{SyntasticStatuslineFlag()}
 " set statusline+=%*
@@ -225,22 +234,27 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_aggregate_errors = 1
 let syntastic_warning_symbol = "W>"
+" }}}
 
-"SnipMate
+"SnipMate {{{
 " let g:snipMate = { 'snippet_version' : 1 }
+" }}}
 
-"Ultisnips
+"Ultisnips {{{
 " let g: UltiSnipsEditSplit="vertical"
+" }}}
 
-"Gutentags
+"Gutentags {{{
 " let g:gutentags_ctags_executable = 'mnt/c/Users/joshb/Downloads/ctags-p5.9.20210613.0-x64/ctags.exe'
+" }}}
 
-"AutoComplPop
+"AutoComplPop {{{
 set shortmess+=c
 let g:acp_completeOption = '.,w,b,u,t'
 " let g:acp_behaviorKeywordLength = 1
+" }}}
 
-"Gitgutter
+"Gitgutter {{{
 set updatetime=100
 nmap ]h <Plug>(GitGutterNextHunk)
 nmap [h <Plug>(GitGutterPrevHunk)
@@ -249,13 +263,15 @@ omap ih <Plug>(GitGutterTextObjectInnerPending)
 omap ah <Plug>(GitGutterTextObjectOuterPending)
 xmap ih <Plug>(GitGutterTextObjectInnerVisual)
 xmap ah <Plug>(GitGutterTextObjectOuterVisual)
+" }}}
 
-"===========Quick save and quit===========
+"===========Quick save and quit=========== {{{
 nnoremap <leader>w :w<cr>
 nnoremap <leader>q :q<cr>
 nnoremap <leader>x :x<cr>
+" }}}
 
-"===========Autocomplete===========
+"===========Autocomplete=========== {{{
 "Command mode
 set wildmenu
 " set wildmode=longest:full,full
@@ -267,17 +283,20 @@ set completeopt=menu,preview
 "Insert mode
 filetype plugin on
 set omnifunc=syntaxcomplete#Complete
+" }}}
 
-"===========Spell check===========
+"===========Spell check=========== {{{
 "set spell
 nnoremap <silent> <leader>c :set spell!<cr>
+" }}}
 
-"===========Autoread===========
+"===========Autoread=========== {{{
 set autoread
 au FocusGained,BufEnter * checktime
 autocmd! bufwritepost $MYVIMRC source $MYVIMRC
+" }}}
 
-"===========Cursor===========
+"===========Cursor=========== {{{
 let &t_SI.="\e[5 q" "SI = INSERT mode
 let &t_SR.="\e[3 q" "SR = REPLACE mode
 let &t_EI.="\e[1 q" "EI = NORMAL mode (ELSE)
@@ -289,47 +308,14 @@ let &t_EI.="\e[1 q" "EI = NORMAL mode (ELSE)
 "  4 -> solid underscore
 "  5 -> blinking vertical bar
 "  6 -> solid vertical bar
+" }}}
 
-"===========Custom text objects===========
-vnoremap af :<C-U>silent! normal! [zV]z<CR>
-omap af :normal Vaf<CR>
-
-onoremap <silent>ai :<C-U>cal <SID>IndTxtObj(0)<CR>
-onoremap <silent>ii :<C-U>cal <SID>IndTxtObj(1)<CR>
-vnoremap <silent>ai :<C-U>cal <SID>IndTxtObj(0)<CR><Esc>gv
-vnoremap <silent>ii :<C-U>cal <SID>IndTxtObj(1)<CR><Esc>gv
-
-function! s:IndTxtObj(inner)
-  let curline = line(".")
-  let lastline = line("$")
-  let i = indent(line(".")) - &shiftwidth * (v:count1 - 1)
-  let i = i < 0 ? 0 : i
-  if getline(".") !~ "^\\s*$"
-    let p = line(".") - 1
-    let nextblank = getline(p) =~ "^\\s*$"
-    while p > 0 && ((i == 0 && !nextblank) || (i > 0 && ((indent(p) >= i && !(nextblank && a:inner)) || (nextblank && !a:inner))))
-      -
-      let p = line(".") - 1
-      let nextblank = getline(p) =~ "^\\s*$"
-    endwhile
-    normal! 0V
-    call cursor(curline, 0)
-    let p = line(".") + 1
-    let nextblank = getline(p) =~ "^\\s*$"
-    while p <= lastline && ((i == 0 && !nextblank) || (i > 0 && ((indent(p) >= i && !(nextblank && a:inner)) || (nextblank && !a:inner))))
-      +
-      let p = line(".") + 1
-      let nextblank = getline(p) =~ "^\\s*$"
-    endwhile
-    normal! $
-  endif
-endfunction
-
-"===========Tabs===========
+"===========Tabs=========== {{{
 nnoremap gn :tabnew<cr>
 nnoremap <leader><leader>t :tab split<cr>
+" }}}
 
-"===========Bracket objects===========
+"===========Bracket objects=========== {{{
 onoremap inb :<C-u>normal! f(vi(<cr>
 onoremap ilb :<C-u>normal! F)vi(<cr>
 onoremap anb :<C-u>normal! f(va(<cr>
@@ -344,20 +330,23 @@ onoremap in[ :<C-u>normal! f[vi[<cr>
 onoremap il[ :<C-u>normal! F[vi[<cr>
 onoremap an[ :<C-u>normal! f[va[<cr>
 onoremap al[ :<C-u>normal! F[va[<cr>
+" }}}
 
-"===========Move lines===========
+"===========Move lines=========== {{{
 nnoremap <C-S-j> mz:m+<cr>`z
 nnoremap <C-S-k> mz:m-2<cr>`z
 vnoremap <C-S-j> :m'>+<cr>`<my`>mzgv`yo`z
 vnoremap <C-S-k> :m'<-2<cr>`>my`<mzgv`yo`z
+" }}}
 
-"===========Add lines===========
+"===========Add lines=========== {{{
 nnoremap <Space>o mzo<Esc>k`z
 nnoremap <Space>O mzO<Esc>j`z
 inoremap <S-CR> <Esc>o
+" }}}
 
-"===========Search options===========
-nnoremap <silent> <Esc> :noh<cr><Esc>
+"===========Search options=========== {{{
+" nnoremap <silent> <Esc> :noh<cr><Esc>
 set ignorecase
 set smartcase
 set incsearch
@@ -368,11 +357,13 @@ augroup IncsearchHighlight
   autocmd CmdlineEnter /,\? :set hlsearch
   autocmd CmdlineLeave /,\? :set nohlsearch
 augroup END
+" }}}
 
-"===========Find and replace============
+"===========Find and replace============ {{{
 set gdefault
+" }}}
 
-"===========Folds===========
+"===========Folds=========== {{{
 " autocmd BufWinLeave *.* mkview
 " autocmd BufWinEnter *.* silent loadview
 
@@ -387,11 +378,22 @@ set gdefault
 "augroup end
 
 set foldmethod=indent
-set foldlevel=99
-set foldnestmax=1
+set foldlevelstart=99
+set foldnestmax=2
+set foldopen-=block
 set nofoldenable
 
-"===========Splits===========
+"fold text object
+vnoremap af :<C-U>silent! normal! [zV]z<CR>
+omap af :normal Vaf<CR>
+
+augroup Folding
+    autocmd!
+    autocmd FileType vim setlocal foldmethod=marker
+augroup END
+" }}}
+
+"===========Splits=========== {{{
 set splitbelow
 set splitright
 set fillchars+=vert:\ 
@@ -427,18 +429,21 @@ nnoremap <silent> <Down> :resize -2<cr>
 
 nnoremap <leader><leader>v :tabnew ~/.vimrc<cr>
 nnoremap <silent> <leader>t :vert term<cr>
+" }}}
 
-"===========Buffers===========
+"===========Buffers=========== {{{
 nnoremap <silent> ]b :bnext<cr>
 nnoremap <silent> [b :bprevious<cr>
 tnoremap <silent> ]b <C-W>:bnext<cr>
 tnoremap <silent> [b <C-W>:bprevious<cr>
+" }}}
 
-"===========QuickFix List===========
+"===========QuickFix List=========== {{{
 nnoremap <silent> ]c :cnext<cr>
 nnoremap <silent> [c :cprevious<cr>
+" }}}
 
-"===========Netrw===========
+"===========Netrw=========== {{{
 "https://shapeshed.com/vim-netrw/
 "let g:netrw_banner = 0
 let g:netrw_liststyle = 3
@@ -446,8 +451,9 @@ let g:netrw_browse_split = 4
 let g:netrw_winsize = 39
 
 nnoremap <leader>v :Vex<cr>
+" }}}
 
-"===========Indentation===========
+"===========Indentation=========== {{{
 set textwidth=119
 set colorcolumn=80
 set shiftround
@@ -467,8 +473,9 @@ augroup END
 "Whitespace
 set listchars=trail:«
 set list
+" }}}
 
-"===========Import statements===========
+"===========Import statements=========== {{{
 "python
 function! Import()
     if &filetype ==# "python"
@@ -479,6 +486,8 @@ function! Import()
 endfunction
 
 nnoremap <leader>i :<C-u>call Import()<cr>
+" }}}
 
-"===========Project Euler===========
+"===========Project Euler=========== {{{
 cabbrev euler -1read template.txt
+" }}}
