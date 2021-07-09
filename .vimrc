@@ -39,6 +39,7 @@ set visualbell
 set ttimeoutlen=5
 "let mapleader = "<Space>"
 "inoremap jk <Esc>
+nnoremap <leader>so :source ~/.vimrc<cr>
 
 " WSL yank support
 set clipboard=unnamedplus
@@ -59,10 +60,13 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'jiangmiao/auto-pairs'
-Plug 'michaeljsmith/vim-indent-object'
 Plug 'easymotion/vim-easymotion'
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'preservim/nerdtree'
+
+"---Text Objects---
+Plug 'michaeljsmith/vim-indent-object'
+" Plug 'vim-scripts/argtextobj.vim'
 
 "---Linting---
 Plug 'nvie/vim-flake8'
@@ -102,6 +106,8 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'powerline/fonts'
 Plug 'doums/darcula'
 Plug 'drewtempelmeyer/palenight.vim'
+Plug 'uiiaoo/java-syntax.vim'
+Plug 'octol/vim-cpp-enhanced-highlight'
 
 call plug#end()
 " }}}
@@ -137,7 +143,7 @@ colorscheme darcula
 " }}}
 
 "Palenight {{{
-autocmd BufRead *.tex colorscheme palenight
+autocmd BufRead *.tex,*.cc,*.cpp colorscheme palenight
 " }}}
 
 "Airline {{{
@@ -377,7 +383,6 @@ set gdefault
 "  autocmd BufWinEnter ?* silent! loadview
 "augroup end
 
-set foldmethod=indent
 set foldlevelstart=99
 set foldnestmax=2
 set foldopen-=block
@@ -390,6 +395,7 @@ omap af :normal Vaf<CR>
 augroup Folding
     autocmd!
     autocmd FileType vim setlocal foldmethod=marker
+    autocmd FileType python setlocal foldmethod=indent
 augroup END
 " }}}
 
@@ -465,6 +471,7 @@ augroup Indentation
     autocmd!
     autocmd FileType tex setlocal tabstop=2 softtabstop=2 shiftwidth=2 textwidth=119
     autocmd FileType python setlocal tabstop=4 softtabstop=4 shiftwidth=4 textwidth=79
+    autocmd FileType java,cpp setlocal softtabstop=4 shiftwidth=4 textwidth=119
     autocmd FileType vim,sh setlocal shiftwidth=4
 augroup END
 
@@ -481,7 +488,7 @@ function! Import()
     if &filetype ==# "python"
         execute "normal! mz\"zyiwgg/^$\<cr>oimport \<Esc>\"zp`z"
     else
-        echo "Not a supported filetype"
+        echo "Filetype not recognized for import statement"
     endif
 endfunction
 
