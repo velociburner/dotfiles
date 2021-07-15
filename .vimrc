@@ -321,7 +321,8 @@ nnoremap gn :tabnew<cr>
 nnoremap <leader><leader>t :tab split<cr>
 " }}}
 
-"===========Bracket objects=========== {{{
+"===========Text objects=========== {{{
+"Brackets
 onoremap inb :<C-u>normal! f(vi(<cr>
 onoremap ilb :<C-u>normal! F)vi(<cr>
 onoremap anb :<C-u>normal! f(va(<cr>
@@ -336,6 +337,9 @@ onoremap in[ :<C-u>normal! f[vi[<cr>
 onoremap il[ :<C-u>normal! F[vi[<cr>
 onoremap an[ :<C-u>normal! f[va[<cr>
 onoremap al[ :<C-u>normal! F[va[<cr>
+
+"function calls
+onoremap ic :<C-u>normal! F<Space>lvt(<cr>
 " }}}
 
 "===========Move lines=========== {{{
@@ -367,6 +371,11 @@ augroup END
 
 "===========Find and replace============ {{{
 set gdefault
+" }}}
+
+"===========Marks=========== {{{
+nnoremap ` '
+nnoremap ' `
 " }}}
 
 "===========Folds=========== {{{
@@ -444,9 +453,12 @@ tnoremap <silent> ]b <C-W>:bnext<cr>
 tnoremap <silent> [b <C-W>:bprevious<cr>
 " }}}
 
-"===========QuickFix List=========== {{{
+"===========QuickFix and Location List=========== {{{
 nnoremap <silent> ]c :cnext<cr>
 nnoremap <silent> [c :cprevious<cr>
+
+nnoremap <silent> ]l :lnext<cr>
+nnoremap <silent> [l :lprevious<cr>
 " }}}
 
 "===========Netrw=========== {{{
@@ -471,7 +483,8 @@ augroup Indentation
     autocmd!
     autocmd FileType tex setlocal tabstop=2 softtabstop=2 shiftwidth=2 textwidth=119
     autocmd FileType python setlocal tabstop=4 softtabstop=4 shiftwidth=4 textwidth=79
-    autocmd FileType java,cpp setlocal softtabstop=4 shiftwidth=4 textwidth=119
+    autocmd FileType java setlocal softtabstop=4 shiftwidth=4 textwidth=119 colorcolumn=100
+    autocmd FileType cpp setlocal tabstop=4 softtabstop=4 shiftwidth=4 textwidth=119
     autocmd FileType vim,sh setlocal shiftwidth=4
 augroup END
 
