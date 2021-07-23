@@ -33,6 +33,7 @@
 set nocompatible
 set encoding=utf-8
 set directory=~/swapfiles
+set hidden
 set number
 set noerrorbells
 set visualbell
@@ -355,6 +356,11 @@ nnoremap <Space>O mzO<Esc>j`z
 inoremap <S-CR> <Esc>o
 " }}}
 
+"===========Paste=========== {{{
+nnoremap <Space>p "0p
+nnoremap <Space>P "0P
+"}}}
+
 "===========Search options=========== {{{
 " nnoremap <silent> <Esc> :noh<cr><Esc>
 set ignorecase
@@ -423,7 +429,7 @@ inoremap <C-L> <Esc><C-W><C-L>
 inoremap <C-H> <Esc><C-W><C-H>
 tnoremap <C-J> <C-W><C-J>
 tnoremap <C-K> <C-W><C-K>
-tnoremap <C-L> <C-W><C-L>
+" tnoremap <C-L> <C-W><C-L> " always on the right anyway, lets me use it for clearing instead
 tnoremap <C-H> <C-W><C-H>
 
 nnoremap <leader>r <C-W>R
