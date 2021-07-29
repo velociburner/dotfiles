@@ -281,14 +281,13 @@ nnoremap <leader>x :x<cr>
 "===========Autocomplete=========== {{{
 "Command mode
 set wildmenu
+set wildignorecase
 " set wildmode=longest:full,full
 set wildmode=list:longest,full
 
 "Insert mode
-set completeopt=menu,preview
-
-"Insert mode
 filetype plugin on
+set completeopt=menu,preview
 set omnifunc=syntaxcomplete#Complete
 " }}}
 
@@ -318,7 +317,7 @@ let &t_EI.="\e[1 q" "EI = NORMAL mode (ELSE)
 " }}}
 
 "===========Tabs=========== {{{
-nnoremap gn :tabnew<cr>
+nnoremap <Space>t :tabnew<cr>
 nnoremap <leader><leader>t :tab split<cr>
 " }}}
 
@@ -356,7 +355,8 @@ nnoremap <Space>O mzO<Esc>j`z
 inoremap <S-CR> <Esc>o
 " }}}
 
-"===========Paste=========== {{{
+"===========Paste and yank=========== {{{
+nnoremap Y y$
 nnoremap <Space>p "0p
 nnoremap <Space>P "0P
 "}}}
@@ -373,6 +373,14 @@ augroup IncsearchHighlight
   autocmd CmdlineEnter /,\? :set hlsearch
   autocmd CmdlineLeave /,\? :set nohlsearch
 augroup END
+
+" make n always search forward and N backward
+nnoremap <expr> n 'Nn'[v:searchforward]
+nnoremap <expr> N 'nN'[v:searchforward]
+
+" make ; always "find" forward and , backward
+nnoremap <expr> ; getcharsearch().forward ? ';' : ','
+nnoremap <expr> , getcharsearch().forward ? ',' : ';'
 " }}}
 
 "===========Find and replace============ {{{
@@ -450,6 +458,7 @@ nnoremap <silent> <Down> :resize -2<cr>
 
 nnoremap <leader><leader>v :tabnew ~/.vimrc<cr>
 nnoremap <silent> <leader>t :vert term<cr>
+nnoremap <silent> <Bar> :vs<cr>
 " }}}
 
 "===========Buffers=========== {{{
