@@ -334,25 +334,39 @@ onoremap anB :<C-u>normal! f{va{<cr>
 onoremap alB :<C-u>normal! F}va{<cr>
 
 onoremap in[ :<C-u>normal! f[vi[<cr>
-onoremap il[ :<C-u>normal! F[vi[<cr>
+onoremap il[ :<C-u>normal! F]vi[<cr>
 onoremap an[ :<C-u>normal! f[va[<cr>
-onoremap al[ :<C-u>normal! F[va[<cr>
+onoremap al[ :<C-u>normal! F]va[<cr>
+
+onoremap in< :<C-u>normal! f<vi<<cr>
+onoremap il< :<C-u>normal! F>vi<<cr>
+onoremap an< :<C-u>normal! f<va<<cr>
+onoremap al< :<C-u>normal! F>va<<cr>
 
 "function calls
 onoremap ic :<C-u>normal! F<Space>lvt(<cr>
+
+"remap ( and )
+nnoremap ) f)
+nnoremap ( F(
 " }}}
 
 "===========Move lines=========== {{{
-nnoremap <C-S-j> mz:m+<cr>`z
-nnoremap <C-S-k> mz:m-2<cr>`z
-vnoremap <C-S-j> :m'>+<cr>`<my`>mzgv`yo`z
-vnoremap <C-S-k> :m'<-2<cr>`>my`<mzgv`yo`z
+nnoremap <leader>j :m.+1<cr>==
+nnoremap <leader>k :m.-2<cr>==
+vnoremap <C-j> :m'>+1<cr>gv=gv
+vnoremap <C-k> :m'<-2<cr>gv=gv
 " }}}
 
-"===========Add lines=========== {{{
+"===========Add stuff to file=========== {{{
+"lines
 nnoremap <Space>o mzo<Esc>k`z
 nnoremap <Space>O mzO<Esc>j`z
 inoremap <S-CR> <Esc>o
+
+"characters at end of line
+nnoremap <Space>; mzA;<Esc>`z
+nnoremap <Space>: mzA:<Esc>`z
 " }}}
 
 "===========Paste and yank=========== {{{
@@ -374,9 +388,9 @@ augroup IncsearchHighlight
   autocmd CmdlineLeave /,\? :set nohlsearch
 augroup END
 
-" make n always search forward and N backward
-nnoremap <expr> n 'Nn'[v:searchforward]
-nnoremap <expr> N 'nN'[v:searchforward]
+" make n always search forward and N backward, and center the screen
+nnoremap <expr> n 'Nn'[v:searchforward] . 'zz'
+nnoremap <expr> N 'nN'[v:searchforward] . 'zz'
 
 " make ; always "find" forward and , backward
 nnoremap <expr> ; getcharsearch().forward ? ';' : ','
@@ -462,8 +476,8 @@ nnoremap <silent> <Bar> :vs<cr>
 " }}}
 
 "===========Buffers=========== {{{
-nnoremap <silent> ]b :bnext<cr>
-nnoremap <silent> [b :bprevious<cr>
+nnoremap <silent> ]b :bnext<cr>`"
+nnoremap <silent> [b :bprevious<cr>`"
 tnoremap <silent> ]b <C-W>:bnext<cr>
 tnoremap <silent> [b <C-W>:bprevious<cr>
 " }}}
