@@ -287,6 +287,7 @@ set wildmode=list:longest,full
 
 "Insert mode
 filetype plugin on
+set complete-=i
 set completeopt=menu,preview
 set omnifunc=syntaxcomplete#Complete
 " }}}
@@ -299,7 +300,7 @@ nnoremap <silent> <leader>c :set spell!<cr>
 "===========Autoread=========== {{{
 set autoread
 au FocusGained,BufEnter * checktime
-autocmd! bufwritepost $MYVIMRC source $MYVIMRC
+autocmd! BufWritePost $MYVIMRC source $MYVIMRC
 " }}}
 
 "===========Cursor=========== {{{
@@ -319,6 +320,11 @@ let &t_EI.="\e[1 q" "EI = NORMAL mode (ELSE)
 "===========Tabs=========== {{{
 nnoremap <Space>t :tabnew<cr>
 nnoremap <leader><leader>t :tab split<cr>
+" }}}
+
+"===========Motions=========== {{{
+nnoremap gh ^
+nnoremap gl $
 " }}}
 
 "===========Text objects=========== {{{
@@ -522,6 +528,10 @@ augroup END
 "Whitespace
 set listchars=trail:«
 set list
+
+"keep visual selection when indenting/dedenting
+xnoremap < <gv
+xnoremap > >gv
 " }}}
 
 "===========Import statements=========== {{{
