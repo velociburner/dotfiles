@@ -251,6 +251,11 @@ let syntastic_warning_symbol = "W>"
 
 "Ultisnips {{{
 " let g: UltiSnipsEditSplit="vertical"
+let g:UltiSnipsEnableSnipMate=0
+let g:UltiSnipsSnippetsDir="~/dotfiles/my_snippets"
+set runtimepath^=~/dotfiles
+let g:UltiSnipsSnippetDirectories=["UltiSnips", "my_snippets"]
+nnoremap <leader>es :UltiSnipsEdit<cr>
 " }}}
 
 "Gutentags {{{
@@ -325,10 +330,8 @@ nnoremap <leader><leader>t :tab split<cr>
 " }}}
 
 "===========Motions=========== {{{
-nnoremap gh ^
-nnoremap gl $
-vnoremap gh ^
-vnoremap gl $
+noremap gh ^
+noremap gl $
 
 inoremap <C-J> <C-O>j
 inoremap <C-K> <C-O>k
