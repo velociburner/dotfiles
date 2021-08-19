@@ -40,7 +40,8 @@ set visualbell
 set ttimeoutlen=5
 "let mapleader = "<Space>"
 "inoremap jk <Esc>
-nnoremap <leader>so :source ~/.vimrc<cr>
+nnoremap <leader>sv :source ~/.vimrc<cr>
+nnoremap <leader>sl ^y$:<C-r>"<cr>
 
 " WSL yank support
 set clipboard=unnamedplus
@@ -325,10 +326,27 @@ nnoremap <leader><leader>t :tab split<cr>
 "===========Motions=========== {{{
 nnoremap gh ^
 nnoremap gl $
+vnoremap gh ^
+vnoremap gl $
+
+inoremap <C-J> <C-O>j
+inoremap <C-K> <C-O>k
+inoremap <C-L> <Esc>la
+inoremap <C-H> <Esc>i
 " }}}
 
 "===========Text objects=========== {{{
 "Brackets
+onoremap ir :<C-u>normal! vi[<cr>
+onoremap ar :<C-u>normal! va[<cr>
+onoremap ia :<C-u>normal! vi<<cr>
+onoremap aa :<C-u>normal! va<<cr>
+
+vnoremap ir i[
+vnoremap ar a[
+vnoremap ia i<
+vnoremap aa a<
+
 onoremap inb :<C-u>normal! f(vi(<cr>
 onoremap ilb :<C-u>normal! F)vi(<cr>
 onoremap anb :<C-u>normal! f(va(<cr>
@@ -339,18 +357,22 @@ onoremap ilB :<C-u>normal! F}vi{<cr>
 onoremap anB :<C-u>normal! f{va{<cr>
 onoremap alB :<C-u>normal! F}va{<cr>
 
-onoremap in[ :<C-u>normal! f[vi[<cr>
-onoremap il[ :<C-u>normal! F]vi[<cr>
-onoremap an[ :<C-u>normal! f[va[<cr>
-onoremap al[ :<C-u>normal! F]va[<cr>
+onoremap inr :<C-u>normal! f[vi[<cr>
+onoremap ilr :<C-u>normal! F]vi[<cr>
+onoremap anr :<C-u>normal! f[va[<cr>
+onoremap alr :<C-u>normal! F]va[<cr>
 
-onoremap in< :<C-u>normal! f<vi<<cr>
-onoremap il< :<C-u>normal! F>vi<<cr>
-onoremap an< :<C-u>normal! f<va<<cr>
-onoremap al< :<C-u>normal! F>va<<cr>
+onoremap ina :<C-u>normal! f<vi<<cr>
+onoremap ila :<C-u>normal! F>vi<<cr>
+onoremap ana :<C-u>normal! f<va<<cr>
+onoremap ala :<C-u>normal! F>va<<cr>
 
-"function calls
-onoremap ic :<C-u>normal! F<Space>lvt(<cr>
+"java/c style comments
+onoremap ic :<C-u>normal! V[*jo]*k<cr>
+onoremap ac :<C-u>normal! V[*o]*<cr>
+
+vnoremap ic [*jo]*k
+vnoremap ac [*o]*
 
 "remap ( and )
 nnoremap ) f)
@@ -373,6 +395,9 @@ inoremap <S-CR> <Esc>o
 "characters at end of line
 nnoremap <Space>; mzA;<Esc>`z
 nnoremap <Space>: mzA:<Esc>`z
+
+"append a single character
+nnoremap <silent> <Space>s :exec "normal a" . nr2char(getchar()) . "\e"<CR>
 " }}}
 
 "===========Paste and yank=========== {{{
@@ -451,10 +476,7 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
-inoremap <C-J> <Esc><C-W><C-J>
-inoremap <C-K> <Esc><C-W><C-K>
-inoremap <C-L> <Esc><C-W><C-L>
-inoremap <C-H> <Esc><C-W><C-H>
+
 tnoremap <C-J> <C-W><C-J>
 tnoremap <C-K> <C-W><C-K>
 " tnoremap <C-L> <C-W><C-L> " always on the right anyway, lets me use it for clearing instead
