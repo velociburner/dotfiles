@@ -68,6 +68,7 @@ Plug 'preservim/nerdtree'
 
 "---Text Objects---
 Plug 'michaeljsmith/vim-indent-object'
+Plug 'wellle/targets.vim'
 " Plug 'vim-scripts/argtextobj.vim'
 
 "---Linting---
@@ -336,37 +337,6 @@ inoremap <C-H> <Esc>i
 " }}}
 
 "===========Text objects=========== {{{
-"Brackets
-onoremap ir :<C-u>normal! vi[<cr>
-onoremap ar :<C-u>normal! va[<cr>
-onoremap ia :<C-u>normal! vi<<cr>
-onoremap aa :<C-u>normal! va<<cr>
-
-vnoremap ir i[
-vnoremap ar a[
-vnoremap ia i<
-vnoremap aa a<
-
-onoremap inb :<C-u>normal! f(vi(<cr>
-onoremap ilb :<C-u>normal! F)vi(<cr>
-onoremap anb :<C-u>normal! f(va(<cr>
-onoremap alb :<C-u>normal! F)va(<cr>
-
-onoremap inB :<C-u>normal! f{vi{<cr>
-onoremap ilB :<C-u>normal! F}vi{<cr>
-onoremap anB :<C-u>normal! f{va{<cr>
-onoremap alB :<C-u>normal! F}va{<cr>
-
-onoremap inr :<C-u>normal! f[vi[<cr>
-onoremap ilr :<C-u>normal! F]vi[<cr>
-onoremap anr :<C-u>normal! f[va[<cr>
-onoremap alr :<C-u>normal! F]va[<cr>
-
-onoremap ina :<C-u>normal! f<vi<<cr>
-onoremap ila :<C-u>normal! F>vi<<cr>
-onoremap ana :<C-u>normal! f<va<<cr>
-onoremap ala :<C-u>normal! F>va<<cr>
-
 "java/c style comments
 onoremap ic :<C-u>normal! V[*jo]*k<cr>
 onoremap ac :<C-u>normal! V[*o]*<cr>
