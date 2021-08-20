@@ -11,8 +11,35 @@ def env(name):
 
 endglobal
 
+# ==========General==========
+snippet begin "begin/end environment" bA
+\begin{$1}
+	$0
+\end{$1}
+endsnippet
+
+snippet txt "text" w
+\text{${VISUAL}$1}$0
+endsnippet
+
+snippet bf "bold" w
+\textbf{${VISUAL}$1}$0
+endsnippet
+
+snippet ita "italics" w
+\textit{${VISUAL}$1}$0
+endsnippet
+
+snippet und "underline" w
+\underline{${VISUAL}$1}$0
+endsnippet
+
 # ==========Preamble==========
 # Packages
+snippet up "use package" w
+\usepackage{$1}$0
+endsnippet
+
 snippet template "template packages and settings"
 \documentclass[12pt]{article}
 \usepackage[letterpaper]{geometry}
@@ -49,12 +76,6 @@ snippet header "title heading"
 endsnippet
 
 # ==========MATH==========
-snippet begin "begin/end environment" bA
-\begin{$1}
-	$0
-\end{$1}
-endsnippet
-
 snippet ba* "unnumbered align environment" bA
 \begin{align*}
 	\label{eq:${1}}
@@ -105,8 +126,18 @@ snippet '((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)/' "create fraction" 
 endsnippet
 
 context "math()"
-snippet / "create fraction from existing" i
+snippet frac "create fraction from existing" iA
 \frac{${VISUAL}}{$1}$0
+endsnippet
+
+context "math()"
+snippet denom "denominator of fraction" iA
+\frac{${1:1}}{${VISUAL}}$0
+endsnippet
+
+context "math()"
+snippet root "square root" iA
+\sqrt{${VISUAL}$1}$0
 endsnippet
 
 context "math()"
@@ -181,6 +212,23 @@ endsnippet
 context "math()"
 snippet pow "superscript" iA
 ^{$1}$0
+endsnippet
+
+context "math()"
+snippet inv "inverse" iA
+^{-1}
+endsnippet
+
+priority 100
+context "math()"
+snippet '(?<!\\)(sin|arcsin|cos|arccos|cot|arccot|csc|arccsc|ln|log|exp|star|perp)' "functions" rwA
+\\`!p snip.rv = match.group(1)`
+endsnippet
+
+priority 100
+context "math()"
+snippet '(?<!\\)(pi|tau|lambda|phi|psi|epsilon|delta|rho)' "symbols" rwA
+\\`!p snip.rv = match.group(1)`
 endsnippet
 
 priority 10
