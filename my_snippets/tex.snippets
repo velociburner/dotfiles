@@ -7,7 +7,7 @@ def comment():
 
 def env(name):
 	[x, y] = vim.eval("vimtex#env#is_inside('" + name + "')")
-	return x != '0' and x != '0'
+	return x != '0' and y != '0'
 
 endglobal
 
@@ -332,29 +332,32 @@ snippet node "qtree branch"
 [.${1} ]${0}
 endsnippet
 
-snippet xp "generic constituent"
+context "env('forest')"
+snippet xp "generic constituent" wA
 [${1:X}P
 	[${2:Spec $1P}]
 	[$1$^\prime$
-		[$1$^0$ [${3}]]
-		xp${0}
+		[$1$^0$ [$3]]
+		$0
 	]
 ]
 endsnippet
 
+context "env('forest')"
 snippet yp "generic adjunct"
 [${1:Y}P
 	[$1P
 		[${2:Spec $1P}]
 		[$1$^\prime$
-			[$1$^0$ [${3}]]
-			xp${0}
+			[$1$^0$ [$3]]
+			$0
 		]
 	]
 	xp
 ]
 endsnippet
 
+context "env('forest')"
 snippet draw "trace arrows"
 \draw[->] (${1:source}) to[out=${3}, in=${4}] (${2:target});
 endsnippet
