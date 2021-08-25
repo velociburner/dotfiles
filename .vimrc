@@ -46,13 +46,13 @@ nnoremap <leader>sl ^y$:<C-r>"<cr>
 " WSL yank support
 set clipboard=unnamedplus
 
-let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path according to your mount point
-if executable(s:clip)
-    augroup WSLYank
-        autocmd!
-        autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:clip, @0) | endif
-    augroup END
-endif
+" let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path according to your mount point
+" if executable(s:clip)
+"     augroup WSLYank
+"         autocmd!
+"         autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:clip, @0) | endif
+"     augroup END
+" endif
 " }}}
 
 "===========Plugins=========== {{{
@@ -65,20 +65,17 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'easymotion/vim-easymotion'
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'preservim/nerdtree'
+Plug 'Jorengarenar/fauxClip'
 
 "---Text Objects---
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'wellle/targets.vim'
-" Plug 'vim-scripts/argtextobj.vim'
 
 "---Linting---
 Plug 'nvie/vim-flake8'
 Plug 'vim-syntastic/syntastic' " must also install checkers separately: flake8, lacheck, etc.
 
 "---Snippets---
-" Plug 'MarcWeber/vim-addon-mw-utils'
-" Plug 'tomtom/tlib_vim'
-" Plug 'garbas/vim-snipmate'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
@@ -97,7 +94,6 @@ Plug 'vim-scripts/AutoComplPop'
 "---Fuzzy finder---
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-"Plug 'ctrlpvim/ctrlp.vim'
 
 "---Git---
 Plug 'tpope/vim-fugitive'
