@@ -146,12 +146,14 @@ autocmd BufRead *.tex,*.cc,*.cpp colorscheme palenight
 " }}}
 
 "Airline {{{
+"https://stackoverflow.com/questions/63148517/how-to-install-powerline-fonts-on-wsl/68236169#68236169
+
 let g:airline_theme='solarized'
 let g:airline_solarized_bg='dark'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#syntastic#enabled = 1
-" let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 1
 
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
@@ -164,22 +166,22 @@ endif
 " let g:airline_right_sep = '◀'
 " let g:airline_symbols.colnr = ' ㏇:'
 " let g:airline_symbols.colnr = ' ℅:'
-let g:airline_symbols.colnr = ' Col:'
+" let g:airline_symbols.colnr = ' Col:'
 " let g:airline_symbols.crypt = '🔒'
 " let g:airline_symbols.linenr = '☰'
 " let g:airline_symbols.linenr = ' ␊:'
 " let g:airline_symbols.linenr = ' ␤:'
 " let g:airline_symbols.linenr = '¶'
-let g:airline_symbols.linenr = ' Ln:'
+" let g:airline_symbols.linenr = ' Ln:'
 let g:airline_symbols.maxlinenr = ''
 " let g:airline_symbols.maxlinenr = '㏑'
-let g:airline_symbols.branch = ''
+" let g:airline_symbols.branch = ''
 " let g:airline_symbols.paste = 'ρ'
 " let g:airline_symbols.paste = 'Þ'
 " let g:airline_symbols.paste = '∥'
 " let g:airline_symbols.spell = 'Ꞩ'
-let g:airline_symbols.notexists = 'Ɇ'
-let g:airline_symbols.whitespace = 'Ξ'
+" let g:airline_symbols.notexists = 'Ɇ'
+" let g:airline_symbols.whitespace = 'Ξ'
 
 " set guifont=Source\ Code\ Pro\ for\ Powerline
 
