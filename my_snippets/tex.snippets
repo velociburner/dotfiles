@@ -218,20 +218,20 @@ endsnippet
 
 priority 100
 context "math()"
-snippet "([A-CE-Za-ce-z])dot" "time derivative" riA
+snippet "([A-Za-z])dot" "time derivative" riA
 \dot{`!p snip.rv = match.group(1)`}
 endsnippet
 
-priority 10
+priority 101
 context "math()"
 snippet ddot "second order time derivative" wA
 \ddot{$1}$0
 endsnippet
 
-priority 100
+priority 200
 context "math()"
-snippet "([A-Za-z])ddot" "second order time derivative" iA
-\ddot{$1}$0
+snippet "([A-Za-z])ddot" "second order time derivative" riA
+\ddot{`!p snip.rv = match.group(1)`}
 endsnippet
 
 context "math()"
@@ -245,7 +245,7 @@ snippet cb "cubed" iA
 endsnippet
 
 context "math()"
-snippet pow "superscript" iA
+snippet td "superscript" iA
 ^{$1}$0
 endsnippet
 
@@ -256,14 +256,14 @@ endsnippet
 
 priority 100
 context "math()"
-snippet '(?<!\\)(sin|arcsin|cos|arccos|cot|arccot|csc|arccsc|ln|log|exp|star|perp)' "functions" rwA
-\\`!p snip.rv = match.group(1)`
+snippet '(?<!(\\|[a-zA-Z]))(sin|arcsin|cos|arccos|tan|arctan|csc|arccsc|sec|arcsec|cot|arccot|ln|log|exp|star|perp)' "functions" rwA
+\\`!p snip.rv = match.group(2)`
 endsnippet
 
 priority 100
 context "math()"
-snippet '(?<!\\)(pi|tau|lambda|phi|psi|epsilon|delta|rho)' "symbols" rwA
-\\`!p snip.rv = match.group(1)`
+snippet '(?<!(\\|[a-zA-Z]))(pi|tau|lambda|phi|psi|epsilon|delta|rho)' "symbols" rwA
+\\`!p snip.rv = match.group(2)`
 endsnippet
 
 priority 10
@@ -308,8 +308,13 @@ snippet xx "cross product" wA
 endsnippet
 
 context "math()"
-snippet . "dot product" wA
+snippet * "dot product" A
 \cdot$0
+endsnippet
+
+context "math()"
+snippet ... "ellipsis" wA
+\ldots$0
 endsnippet
 
 context "math()"
