@@ -38,21 +38,11 @@ set number
 set noerrorbells
 set visualbell
 set ttimeoutlen=5
+set clipboard=unnamedplus
 "let mapleader = "<Space>"
 "inoremap jk <Esc>
-nnoremap <leader>sv :source ~/.vimrc<cr>
-nnoremap <leader>sl ^y$:<C-r>"<cr>
-
-" WSL yank support
-set clipboard=unnamedplus
-
-" let s:clip = '/mnt/c/Windows/System32/clip.exe'  " change this path according to your mount point
-" if executable(s:clip)
-"     augroup WSLYank
-"         autocmd!
-"         autocmd TextYankPost * if v:event.operator ==# 'y' | call system(s:clip, @0) | endif
-"     augroup END
-" endif
+nnoremap <leader>sv :source $MYVIMRC<cr>
+nnoremap <leader>sl :<C-R><C-L><cr>
 " }}}
 
 "===========Plugins=========== {{{
@@ -159,40 +149,8 @@ if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
 
-" unicode symbols
-" let g:airline_left_sep = '»'
-" let g:airline_left_sep = '▶'
-" let g:airline_right_sep = '«'
-" let g:airline_right_sep = '◀'
-" let g:airline_symbols.colnr = ' ㏇:'
-" let g:airline_symbols.colnr = ' ℅:'
-" let g:airline_symbols.colnr = ' Col:'
-" let g:airline_symbols.crypt = '🔒'
-" let g:airline_symbols.linenr = '☰'
-" let g:airline_symbols.linenr = ' ␊:'
-" let g:airline_symbols.linenr = ' ␤:'
-" let g:airline_symbols.linenr = '¶'
-" let g:airline_symbols.linenr = ' Ln:'
 let g:airline_symbols.maxlinenr = ''
-" let g:airline_symbols.maxlinenr = '㏑'
-" let g:airline_symbols.branch = ''
-" let g:airline_symbols.paste = 'ρ'
-" let g:airline_symbols.paste = 'Þ'
-" let g:airline_symbols.paste = '∥'
-" let g:airline_symbols.spell = 'Ꞩ'
-" let g:airline_symbols.notexists = 'Ɇ'
-" let g:airline_symbols.whitespace = 'Ξ'
-
-" set guifont=Source\ Code\ Pro\ for\ Powerline
-
-" " powerline symbols
-" " let g:airline_left_sep = ''
-" " let g:airline_left_alt_sep = ''
-" " let g:airline_right_sep = ''
-" " let g:airline_right_alt_sep = ''
-" " let g:airline_symbols.branch = ''
-" " let g:airline_symbols.readonly = ''
-" " let g:airline_symbols.linenr = ''
+let g:airline_symbols.whitespace = 'Ξ'
 " }}}
 
 "Easymotion {{{
@@ -231,20 +189,12 @@ let g:flake8_quickfix_height=3
 " }}}
 
 "Syntastic {{{
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-
 let g:syntastic_loc_list_height = 3
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_aggregate_errors = 1
 let syntastic_warning_symbol = "W>"
-" }}}
-
-"SnipMate {{{
-" let g:snipMate = { 'snippet_version' : 1 }
 " }}}
 
 "Ultisnips {{{
@@ -254,10 +204,6 @@ let g:UltiSnipsSnippetsDir="~/dotfiles/my_snippets"
 set runtimepath^=~/dotfiles
 let g:UltiSnipsSnippetDirectories=["UltiSnips", "my_snippets"]
 nnoremap <leader>es :UltiSnipsEdit<cr>
-" }}}
-
-"Gutentags {{{
-" let g:gutentags_ctags_executable = 'mnt/c/Users/joshb/Downloads/ctags-p5.9.20210613.0-x64/ctags.exe'
 " }}}
 
 "AutoComplPop {{{
@@ -298,7 +244,6 @@ set omnifunc=syntaxcomplete#Complete
 " }}}
 
 "===========Spell check=========== {{{
-"set spell
 nnoremap <silent> <leader>c :set spell!<cr>
 " }}}
 
@@ -399,10 +344,6 @@ nnoremap <expr> ; getcharsearch().forward ? ';' : ','
 nnoremap <expr> , getcharsearch().forward ? ',' : ';'
 " }}}
 
-"===========Find and replace============ {{{
-set gdefault
-" }}}
-
 "===========Marks=========== {{{
 nnoremap ` '
 nnoremap ' `
@@ -450,7 +391,6 @@ nnoremap <C-H> <C-W><C-H>
 
 tnoremap <C-J> <C-W><C-J>
 tnoremap <C-K> <C-W><C-K>
-" tnoremap <C-L> <C-W><C-L> " always on the right anyway, lets me use it for clearing instead
 tnoremap <C-H> <C-W><C-H>
 
 nnoremap <leader>r <C-W>R
