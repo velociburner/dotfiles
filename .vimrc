@@ -55,44 +55,52 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'easymotion/vim-easymotion'
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'preservim/nerdtree'
-Plug 'Jorengarenar/fauxClip'
+if !has('nvim')
+    Plug 'Jorengarenar/fauxClip'
+endif
 
 "---Text Objects---
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'wellle/targets.vim'
 
 "---Linting---
-Plug 'nvie/vim-flake8'
-Plug 'vim-syntastic/syntastic' " must also install checkers separately: flake8, lacheck, etc.
+if !has('nvim')
+    Plug 'vim-syntastic/syntastic' " must also install checkers separately: flake8, lacheck, etc.
+endif
 
 "---Snippets---
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
-"---Tags---
+""---Tags---
 Plug 'ludovicchabant/vim-gutentags' " must also install ctags separately
 
-"---VimTex---
+""---VimTex---
 Plug 'lervag/vimtex'
 
-"---Autocomplete---
-Plug 'vim-scripts/AutoComplPop'
-"Plug 'ycm-core/YouCompleteMe'
-"Plug 'davidhalter/jedi-vim'
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+""---Autocomplete---
+if has('nvim')
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+else
+    Plug 'vim-scripts/AutoComplPop'
+endif
 
 "---Fuzzy finder---
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
-"---Git---
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
+""---Git---
+if has('nvim')
+    Plug 'nvim-lua/plenary.nvim'
+    Plug 'tanvirtin/vgit.nvim'
+else
+    Plug 'tpope/vim-fugitive'
+    Plug 'airblade/vim-gitgutter'
+endif
 
-"---Style---
+""---Style---
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'powerline/fonts'
 Plug 'doums/darcula'
 Plug 'drewtempelmeyer/palenight.vim'
 Plug 'uiiaoo/java-syntax.vim'
@@ -164,8 +172,8 @@ map <Space>l <Plug>(easymotion-lineforward)
 let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
 
 " <Leader>f{char} to move to {char}
-map  <leader>F <Plug>(easymotion-bd-f)
-nmap <leader>F <Plug>(easymotion-overwin-f)
+map  <leader>f <Plug>(easymotion-bd-f)
+nmap <leader>f <Plug>(easymotion-overwin-f)
 
 " <leader>s{char}{char} to move to {char}{char}
 nmap <leader>S <Plug>(easymotion-overwin-f2)
@@ -180,7 +188,7 @@ nmap <leader>W <Plug>(easymotion-overwin-w)
 " }}}
 
 "Fuzzy finder {{{
-nnoremap <silent> <leader>f :Files<cr>
+nnoremap <silent> <leader>F :Files<cr>
 " }}}
 
 "Flake8 {{{
@@ -270,6 +278,8 @@ let &t_EI.="\e[1 q" "EI = NORMAL mode (ELSE)
 "===========Tabs=========== {{{
 nnoremap <Space>t :tabnew<cr>
 nnoremap <leader><leader>t :tab split<cr>
+nnoremap <S-R> gt
+nnoremap <S-E> gT
 " }}}
 
 "===========Motions=========== {{{
@@ -393,7 +403,7 @@ tnoremap <C-J> <C-W><C-J>
 tnoremap <C-K> <C-W><C-K>
 tnoremap <C-H> <C-W><C-H>
 
-nnoremap <leader>r <C-W>R
+nnoremap <leader>R <C-W>R
 
 " nnoremap <C-=> <C-W>2>
 " nnoremap <C-_> <C-W>2<
