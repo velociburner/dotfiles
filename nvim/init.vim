@@ -70,6 +70,8 @@ lua << EOF
 require('vgit').setup()
 EOF
 
+nnoremap <silent> ]h :VGit hunk_down<cr>
+nnoremap <silent> [h :VGit hunk_up<cr>
 nnoremap <silent> <leader>gb :VGit buffer_blame_preview<cr>
 nnoremap <silent> <leader>gg :VGit buffer_gutter_blame_preview<cr>
 nnoremap <silent> <leader>gh :VGit buffer_hunk_preview<cr>
