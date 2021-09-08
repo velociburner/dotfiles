@@ -1,0 +1,9 @@
+{
+        "python.pythonPath": "~/anaconda3/bin/python3.8",
+        "python.linting.flake8Enabled": true,
+        "coc.preferences.formatOnSaveFiletypes": [
+                "python",
+                "json",
+                "jsonc"
+        ]
+}
