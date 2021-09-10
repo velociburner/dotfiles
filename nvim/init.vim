@@ -122,6 +122,14 @@ endif
 
 " }}}
 
+"===========Telescope=========== {{{
+" Find files using Telescope command-line sugar.
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+"}}}
+
 "===========Git=========== {{{
 lua << EOF
 require('vgit').setup()
@@ -134,4 +142,18 @@ nnoremap <silent> <leader>gg :VGit buffer_gutter_blame_preview<cr>
 nnoremap <silent> <leader>gh :VGit buffer_hunk_preview<cr>
 nnoremap <silent> <leader>gd :VGit buffer_diff_preview<cr>
 nnoremap <silent> <leader>gl :VGit buffer_history<cr>
+" }}}
+
+"===========Treesitter=========== {{{
+" lua <<EOF
+" require'nvim-treesitter.configs'.setup {
+"     -- Modules and its options go here
+"     highlight = {
+"         enable = true,
+"         additional_vim_regex_highlighting = false,
+"     },
+"     incremental_selection = { enable = true  },
+"     textobjects = { enable = true  },
+"     }
+" EOF
 " }}}

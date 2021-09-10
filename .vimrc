@@ -49,6 +49,9 @@ nnoremap <leader>sl :<C-R><C-L><cr>
 call plug#begin('~/.vim/plugged')
 
 "---Making my life easier---
+" if has('nvim')
+"     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+" endif
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'jiangmiao/auto-pairs'
@@ -86,12 +89,16 @@ else
 endif
 
 "---Fuzzy finder---
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
+if has('nvim')
+    Plug 'nvim-lua/plenary.nvim'
+    Plug 'nvim-telescope/telescope.nvim'
+else
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'junegunn/fzf.vim'
+endif
 
 ""---Git---
 if has('nvim')
-    Plug 'nvim-lua/plenary.nvim'
     Plug 'tanvirtin/vgit.nvim'
 else
     Plug 'tpope/vim-fugitive'
@@ -172,8 +179,8 @@ map <Space>l <Plug>(easymotion-lineforward)
 let g:EasyMotion_startofline = 0 " keep cursor column when JK motion
 
 " <Leader>f{char} to move to {char}
-map  <leader>f <Plug>(easymotion-bd-f)
-nmap <leader>f <Plug>(easymotion-overwin-f)
+map  <leader><leader>f <Plug>(easymotion-bd-f)
+nmap <leader><leader>f <Plug>(easymotion-overwin-f)
 
 " <leader>s{char}{char} to move to {char}{char}
 nmap <leader>S <Plug>(easymotion-overwin-f2)
@@ -252,7 +259,7 @@ set omnifunc=syntaxcomplete#Complete
 " }}}
 
 "===========Spell check=========== {{{
-nnoremap <silent> <leader>c :set spell!<cr>
+nnoremap <silent> <leader>ss :set spell!<cr>
 " }}}
 
 "===========Autoread=========== {{{
