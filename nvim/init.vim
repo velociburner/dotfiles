@@ -1,8 +1,11 @@
+"===========Load vimrc=========== {{{
 set runtimepath^=~/.vim runtimepath+=~/.vim/after
 let &packpath = &runtimepath
 source ~/.vimrc
+" }}}
 
 "===========Basic=========== {{{
+set noshowcmd
 let g:python3_host_prog = expand('~/anaconda3/bin/python3.8')
 let g:clipboard = {
             \   'name': 'WslClipboard',
