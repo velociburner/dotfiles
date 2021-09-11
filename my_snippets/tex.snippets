@@ -162,7 +162,7 @@ endsnippet
 
 context "math()"
 snippet frac "create fraction from existing" iA
-\frac{${VISUAL}$1}{$2}$0
+\frac{${VISUAL}}{$2}$0
 endsnippet
 
 context "math()"
@@ -210,6 +210,11 @@ snippet sum "summation" wA
 \sum_{${1:n = 1}}^{${2:\infty}} $0
 endsnippet
 
+context "math()"
+snippet prod "product" wA
+\prod_{${1:n = 1}}^{${2:\infty}} $0
+endsnippet
+
 priority 10
 context "math()"
 snippet dot "time derivative" wA
@@ -250,19 +255,24 @@ snippet td "superscript" iA
 endsnippet
 
 context "math()"
+snippet sub "subscript" iA
+_{$1}$0
+endsnippet
+
+context "math()"
 snippet inv "inverse" iA
 ^{-1}
 endsnippet
 
 priority 100
 context "math()"
-snippet '(?<!(\\|[a-zA-Z]))(sin|arcsin|cos|arccos|tan|arctan|csc|arccsc|sec|arcsec|cot|arccot|ln|log|exp|star|perp)' "functions" rwA
+snippet '(?<!(\\|[a-zA-Z]))(sin|arcsin|cos|arccos|tan|arctan|csc|arccsc|sec|arcsec|cot|arccot|ln|log|exp|star|perp|argmax|argmin)' "functions" rwA
 \\`!p snip.rv = match.group(2)`
 endsnippet
 
 priority 100
 context "math()"
-snippet '(?<!(\\|[a-zA-Z]))(pi|tau|lambda|phi|psi|epsilon|delta|rho)' "symbols" rwA
+snippet '(?<!(\\|[a-zA-Z]))(pi|tau|lambda|phi|psi|epsilon|delta|rho|in|exists|forall)' "symbols" rwA
 \\`!p snip.rv = match.group(2)`
 endsnippet
 
@@ -333,6 +343,10 @@ endsnippet
 
 snippet lra "longrightarrow"
 \longrightarrow $0
+endsnippet
+
+snippet la "leftarrow"
+\leftarrow $0
 endsnippet
 
 context "math()"
