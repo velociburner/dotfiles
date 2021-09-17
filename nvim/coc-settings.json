@@ -1,5 +1,5 @@
 {
-        "python.pythonPath": "~/anaconda3/bin/python3.8",
+        "python.pythonPath": "~/anaconda3/envs/cosi114a/bin/python3.9",
         "python.linting.flake8Enabled": true,
         "coc.preferences.formatOnSaveFiletypes": [
                 "python",
