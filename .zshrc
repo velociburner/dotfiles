@@ -75,7 +75,9 @@ DISABLE_AUTO_TITLE="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git tmux vi-mode)
+
+# syntax highlighting must be installed separately and listed last in the plugins array
+plugins=(git tmux vi-mode zsh-syntax-highlighting)
 VI_MODE_SET_CURSOR=true
 
 source $ZSH/oh-my-zsh.sh
