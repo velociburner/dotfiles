@@ -143,7 +143,9 @@ nnoremap <silent> [h :VGit hunk_up<cr>
 nnoremap <silent> <leader>gb :VGit buffer_blame_preview<cr>
 nnoremap <silent> <leader>gg :VGit buffer_gutter_blame_preview<cr>
 nnoremap <silent> <leader>gh :VGit buffer_hunk_preview<cr>
+nnoremap <silent> <leader>gr :VGit buffer_hunk_reset<cr>
 nnoremap <silent> <leader>gd :VGit buffer_diff_preview<cr>
+nnoremap <silent> <leader>gp :VGit project_diff_preview<cr>
 nnoremap <silent> <leader>gl :VGit buffer_history<cr>
 " }}}
 
