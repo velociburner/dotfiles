@@ -331,6 +331,9 @@ nnoremap <Space>: mzA:<Esc>`z
 
 "append a single character
 nnoremap <silent> <Space>s :exec "normal a" . nr2char(getchar()) . "\e"<CR>
+
+"copy paragraph
+nnoremap cp yap<S-}>p
 " }}}
 
 "===========Paste and yank=========== {{{
@@ -434,6 +437,7 @@ nnoremap <silent> <Bar> :vs<cr>
 "===========Buffers=========== {{{
 nnoremap <silent> ]b :bnext<cr>`"
 nnoremap <silent> [b :bprevious<cr>`"
+nnoremap <silent> <BS> <C-^>
 tnoremap <silent> ]b <C-W>:bnext<cr>
 tnoremap <silent> [b <C-W>:bprevious<cr>
 " }}}
