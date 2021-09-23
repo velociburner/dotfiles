@@ -40,7 +40,7 @@ if has('nvim')
     nmap <silent> gd <Plug>(coc-definition)
     nmap <silent> gy <Plug>(coc-type-definition)
     nmap <silent> gi <Plug>(coc-implementation)
-    " nmap <silent> gr <Plug>(coc-references)
+    nmap <silent> <space>gr <Plug>(coc-references)
 
     " Use K to show documentation in preview window.
     nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -135,18 +135,26 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 "===========Git=========== {{{
 lua << EOF
-require('vgit').setup()
+require('vgit').setup({
+    controller = {
+        blames_enabled = false,
+    },
+})
 EOF
 
 nnoremap <silent> ]h :VGit hunk_down<cr>
 nnoremap <silent> [h :VGit hunk_up<cr>
+nnoremap <silent> <leader>gs :VGit buffer_hunk_stage<cr>
+nnoremap <silent> <leader>gu :VGit buffer_hunk_reset<cr>
+nnoremap <silent> <leader>gh :VGit buffer_hunk_preview<cr>
 nnoremap <silent> <leader>gb :VGit buffer_blame_preview<cr>
 nnoremap <silent> <leader>gg :VGit buffer_gutter_blame_preview<cr>
-nnoremap <silent> <leader>gh :VGit buffer_hunk_preview<cr>
-nnoremap <silent> <leader>gr :VGit buffer_hunk_reset<cr>
 nnoremap <silent> <leader>gd :VGit buffer_diff_preview<cr>
 nnoremap <silent> <leader>gp :VGit project_diff_preview<cr>
-nnoremap <silent> <leader>gl :VGit buffer_history<cr>
+nnoremap <silent> <leader>gl :VGit buffer_history_preview<cr>
+nnoremap <silent> <leader>gr :VGit buffer_reset<cr>
+nnoremap <silent> <leader>gx :VGit toggle_diff_preference<cr>
+nnoremap <silent> <leader>gt :VGit toggle_buffer_blames<cr>
 " }}}
 
 "===========Treesitter=========== {{{
