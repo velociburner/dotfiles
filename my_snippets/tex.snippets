@@ -171,8 +171,13 @@ snippet denom "denominator of fraction" iA
 endsnippet
 
 context "math()"
-snippet root "square root" iA
+snippet sqrt "square root" iA
 \sqrt{${VISUAL}$1}$0
+endsnippet
+
+context "math()"
+snippet root "nth root" iA
+\sqrt[$1]{${VISUAL}$2}$0
 endsnippet
 
 context "math()"
@@ -240,7 +245,7 @@ snippet "([A-Za-z])ddot" "second order time derivative" riA
 endsnippet
 
 context "math()"
-snippet sq "squared" iA
+snippet sr "squared" iA
 ^2
 endsnippet
 
