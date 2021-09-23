@@ -300,12 +300,22 @@ inoremap <C-H> <Esc>i
 " }}}
 
 "===========Text objects=========== {{{
+"lines
+xnoremap ix g_o^
+onoremap ix :<C-u>normal vix<cr>
+xnoremap ax $o0
+onoremap ax :<C-u>normal vax<cr>
+
 "java/c style comments
 onoremap ic :<C-u>normal! V[*jo]*k<cr>
 onoremap ac :<C-u>normal! V[*o]*<cr>
 
 vnoremap ic [*jo]*k
 vnoremap ac [*o]*
+
+"syntax object (function call, etc.)
+vnoremap iy :<C-u>normal vabob<cr>
+onoremap iy :<C-u>normal viy<cr>
 
 "remap ( and )
 nnoremap ) f)
