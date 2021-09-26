@@ -1,3 +1,29 @@
+global !p
+
+def make_collection(list_type, snip):
+	words = str(snip.v.text.split())
+
+	if list_type == "tuple":
+		words = "(" + words[1:-1] + ")"
+	elif list_type == "set":
+		words = "{" + words[1:-1] + "}"
+
+	snip.rv = words
+
+endglobal
+
+snippet list "create a list from selected text"
+`!p make_collection("list", snip)`
+endsnippet
+
+snippet tuple "create a tuple from selected text"
+`!p make_collection("tuple", snip)`
+endsnippet
+
+snippet set "create a set from selected text"
+`!p make_collection("set", snip)`
+endsnippet
+
 snippet np "numpy" b
 import numpy as np
 endsnippet
