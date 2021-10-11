@@ -85,6 +85,7 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
+export PATH=/home/joshbp/.local/bin:$PATH
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -107,3 +108,15 @@ fi
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias saud='sudo apt update'
+alias saug='sudo apt upgrade'
+alias alu='apt list --upgradable'
+alias cdd='cd /mnt/c/Users/joshb/OneDrive/Desktop'
+
+# Welcome message
+echo "${fg[blue]}___________${fg[cyan]}_________ "
+echo "${fg[blue]}\\______   \\${fg[cyan]}______   \\"
+echo "${fg[blue]} |    |  _/${fg[cyan]}|     ___/"
+echo "${fg[blue]} |    |   \\${fg[cyan]}|    |    "
+echo "${fg[blue]} |______  /${fg[cyan]}|____|    "
+echo "${fg[blue]}        \\/"
