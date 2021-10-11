@@ -38,7 +38,7 @@ set number
 set noerrorbells
 set visualbell
 set ttimeoutlen=5
-set clipboard=unnamedplus
+"set clipboard=unnamedplus
 "let mapleader = "<Space>"
 "inoremap jk <Esc>
 nnoremap <leader>sv :source $MYVIMRC<cr>
@@ -196,11 +196,6 @@ nmap <leader>W <Plug>(easymotion-overwin-w)
 
 "Fuzzy finder {{{
 nnoremap <silent> <leader>F :Files<cr>
-" }}}
-
-"Flake8 {{{
-"let g:flake8_show_in_file=1  " show
-let g:flake8_quickfix_height=3
 " }}}
 
 "Syntastic {{{
