@@ -35,3 +35,8 @@ endsnippet
 snippet pd "pandas" b
 import pandas as pd
 endsnippet
+
+snippet witho "with open" b
+with open("${1:filename}", ${2:'r'}, encoding='utf8') as f:
+	${VISUAL:pass}
+endsnippet
