@@ -112,6 +112,10 @@ alias saud='sudo apt update'
 alias saug='sudo apt upgrade'
 alias alu='apt list --upgradable'
 alias cdd='cd /mnt/c/Users/joshb/OneDrive/Desktop'
+alias cac='conda activate'
+alias cdac='conda deactivate'
+alias celist='conda env list'
+alias clist='conda list'
 
 # Welcome message
 echo "${fg[blue]}___________${fg[cyan]}_________ "
