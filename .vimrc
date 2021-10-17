@@ -65,6 +65,9 @@ endif
 "---Text Objects---
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'wellle/targets.vim'
+if has('nvim')
+    Plug 'lukas-reineke/indent-blankline.nvim'
+endif
 
 "---Linting---
 if !has('nvim')
@@ -253,8 +256,13 @@ set completeopt=menu,preview
 set omnifunc=syntaxcomplete#Complete
 " }}}
 
-"===========Spell check=========== {{{
+"===========Spelling=========== {{{
+" spell check
 nnoremap <silent> <leader>ss :set spell!<cr>
+
+" abbreviations
+iabbrev slef self
+abbrev functino function
 " }}}
 
 "===========Autoread=========== {{{
