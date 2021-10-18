@@ -1,10 +1,12 @@
 -- https://vonheikemen.github.io/devlog/tools/configuring-neovim-using-lua/
+-----------Load vimrc----------- {{{
 vim.opt.runtimepath:prepend('~/.vim')
 vim.opt.runtimepath:append('~/.vim/after')
 vim.g.packpath = vim.g.runtimepath
 vim.cmd 'source ~/.vimrc'
+-- }}}
 
------------Basic-----------
+-----------Basic----------- {{{
 vim.opt.showcmd = false
 vim.g.python3_host_prog = vim.fn.expand('~/anaconda3/bin/python3.8')
 
@@ -15,20 +17,27 @@ local t = function(str)
     return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
 
------------Coc-----------
+vim.g.compatible = false
+vim.g.encoding = 'utf-8'
+vim.g.directory = '~/swapfiles'
+vim.g.hidden = true
+vim.g.number = true
+vim.g.errorbells = false
+vim.g.visualbell = true
+vim.g.ttimeoutlen = 5
+
+vim.g.localleader = ','
+map('n', ';', ':', {noremap = true})
+map('n', '<leader>sv', ':source $MYVIMRC<cr>', {noremap = true})
+map('n', '<leader>sl', ':<C-R><C-L><cr>', {noremap = true})
+-- }}}
+
+-----------Coc----------- {{{
 -- Use <c-space> to trigger completion.
 map('i', '<c-space>', 'coc#refresh()', {noremap = true, silent = true, expr = true})
 
 -- Make <CR> auto-select the first completion item and notify coc.nvim to
 -- format on enter, <cr> could be remapped by other vim plugin
-
--- _G.smart_enter = function()
---     if vim.fn.pumvisible() == 1 then
---         return t'coc#_select_confirm()'
---     else
---         return t'<C-g>u<CR><c-r>=coc#on_enter()<CR>'
---     end
--- end
 
 map('i', '<cr>', 'pumvisible() ? coc#_select_confirm() : "<C-g>u<CR><c-r>=coc#on_enter()<CR>"', {noremap = true, expr = true})
 
@@ -140,15 +149,17 @@ map('n', '<leader>cp', ':<C-u>CocPrev<cr>',
 -- Resume latest coc list.
 map('n', '<leader>cr', ':<C-u>CocListResume<cr>',
     {noremap = true, silent = true, nowait = true})
+-- }}}
 
-----------Telescope-----------
+----------Telescope----------- {{{
 -- Find files using Telescope command-line sugar.
 map('n', '<leader>ff', '<cmd>Telescope find_files<cr>', {noremap = true})
 map('n', '<leader>fg', '<cmd>Telescope live_grep<cr>', {noremap = true})
 map('n', '<leader>fb', '<cmd>Telescope buffers<cr>', {noremap = true})
 map('n', '<leader>fh', '<cmd>Telescope help_tags<cr>', {noremap = true})
+-- }}}
 
------------Git-----------
+-----------Git----------- {{{
 require('vgit').setup({
     controller = {
         blames_enabled = false,
@@ -168,8 +179,9 @@ map('n', '<leader>gl', ':VGit buffer_history_preview<cr>', {noremap = true, sile
 map('n', '<leader>gr', ':VGit buffer_reset<cr>', {noremap = true, silent = true})
 map('n', '<leader>gx', ':VGit toggle_diff_preference<cr>', {noremap = true, silent = true})
 map('n', '<leader>gt', ':VGit toggle_buffer_blames<cr>', {noremap = true, silent = true})
+-- }}}
 
------------Indent Blank Line-----------
+-----------Indent Blank Line----------- {{{
 vim.cmd [[highlight IndentBlanklineIndent1 guifg=#61AFEF gui=nocombine]]
 vim.cmd [[highlight IndentBlanklineIndent2 guifg=#E06C75 gui=nocombine]]
 vim.cmd [[highlight IndentBlanklineIndent3 guifg=#E5C07B gui=nocombine]]
@@ -189,3 +201,30 @@ require("indent_blankline").setup {
         "IndentBlanklineIndent6",
     },
 }
+-- }}}
+
+-----------Treesitter----------- {{{
+-- https://github.com/rockerBOO/awesome-neovim#tree-sitter-supported-colorscheme
+require('nvim-treesitter.configs').setup {
+    -- Modules and its options go here
+    ensure_installed = { "python", "json", "lua", "vim" },
+
+    highlight = {
+        enable = true,
+        additional_vim_regex_highlighting = false,
+    },
+    incremental_selection = {
+        enable = true,
+        keymaps = {
+            init_selection = "gnn",
+            node_incremental = "gni",
+            scope_incremental = "gns",
+            node_decremental = "gnd",
+        },
+    },
+    textobjects = { enable = true },
+}
+
+vim.wo.foldmethod = 'expr'
+vim.wo.foldexpr = 'nvim_treesitter#foldexpr()'
+-- }}}
