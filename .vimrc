@@ -49,30 +49,21 @@ nnoremap <leader>sl :<C-R><C-L><cr>
 call plug#begin('~/.vim/plugged')
 
 "---Making my life easier---
-" if has('nvim')
-"     Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-" endif
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
 Plug 'jiangmiao/auto-pairs'
 Plug 'easymotion/vim-easymotion'
 Plug 'vim-scripts/ReplaceWithRegister'
 Plug 'preservim/nerdtree'
-if !has('nvim')
-    Plug 'Jorengarenar/fauxClip'
-endif
+Plug 'Jorengarenar/fauxClip'
 
 "---Text Objects---
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'wellle/targets.vim'
-if has('nvim')
-    Plug 'lukas-reineke/indent-blankline.nvim'
-endif
 
 "---Linting---
-if !has('nvim')
-    Plug 'vim-syntastic/syntastic' " must also install checkers separately: flake8, lacheck, etc.
-endif
+Plug 'vim-syntastic/syntastic' " must also install checkers separately: flake8, lacheck, etc.
 
 "---Snippets---
 Plug 'SirVer/ultisnips'
@@ -85,28 +76,15 @@ Plug 'ludovicchabant/vim-gutentags' " must also install ctags separately
 Plug 'lervag/vimtex'
 
 ""---Autocomplete---
-if has('nvim')
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
-else
-    Plug 'vim-scripts/AutoComplPop'
-endif
+Plug 'vim-scripts/AutoComplPop'
 
 "---Fuzzy finder---
-if has('nvim')
-    Plug 'nvim-lua/plenary.nvim'
-    Plug 'nvim-telescope/telescope.nvim'
-else
-    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-    Plug 'junegunn/fzf.vim'
-endif
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 ""---Git---
-if has('nvim')
-    Plug 'tanvirtin/vgit.nvim'
-else
-    Plug 'tpope/vim-fugitive'
-    Plug 'airblade/vim-gitgutter'
-endif
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 
 ""---Style---
 Plug 'vim-airline/vim-airline'
