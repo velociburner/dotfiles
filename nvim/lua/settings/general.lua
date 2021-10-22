@@ -8,7 +8,6 @@ vim.opt.directory = vim.fn.expand('~/swapfiles')
 vim.g.python3_host_prog = vim.fn.expand('~/anaconda3/bin/python3.8')
 
 vim.opt.termguicolors = true
-vim.cmd 'set t_Co=256'
 vim.cmd 'colorscheme onedark'
 -- }}}
 
@@ -17,7 +16,7 @@ vim.opt.wildmenu = true
 vim.opt.wildignorecase = true
 vim.opt.wildmode = 'list:longest,full'
 
-vim.g.updatetime = 100
+vim.opt.updatetime = 100
 vim.opt.shortmess:append('c')
 -- }}}
 
