@@ -20,16 +20,16 @@ map('n', '<space>gr', '<Plug>(coc-references)', {silent = true})
 map('n', 'K', 'v:lua.show_documentation()', exopts)
 
 _G.show_documentation = function()
-    local filetype = vim.bo.filetype
+  local filetype = vim.bo.filetype
 
-    if filetype == 'vim' or filetype == 'help' then
-        execute('h ' .. vim.fn.expand('<cword>'))
-    elseif vim.call('coc#rpc#ready') then
+  if filetype == 'vim' or filetype == 'help' then
+    execute('h ' .. vim.fn.expand('<cword>'))
+  elseif vim.call('coc#rpc#ready') then
     -- elseif vim.fn['coc#rpc#ready']() then
-        vim.fn.CocActionAsync('doHover')
-    else
-        execute('!' .. vim.bo.keywordprg .. ' ' .. vim.fn.expand('<cword>'))
-    end
+    vim.fn.CocActionAsync('doHover')
+  else
+    execute('!' .. vim.bo.keywordprg .. ' ' .. vim.fn.expand('<cword>'))
+  end
 end
 
 -- Highlight the symbol and its references when holding the cursor.
@@ -43,13 +43,13 @@ map('x', '<leader>cf', '<Plug>(coc-format-selected)', {})
 map('n', '<leader>cf', '<Plug>(coc-format-selected)', {})
 
 vim.cmd [[
-    augroup mygroup
-        autocmd!
-        " Setup formatexpr specified filetype(s).
-        autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-        " Update signature help on jump placeholder.
-        autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-    augroup end
+  augroup mygroup
+    autocmd!
+    " Setup formatexpr specified filetype(s).
+    autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+    " Update signature help on jump placeholder.
+    autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+  augroup end
 ]]
 
 -- Applying codeAction to the selected region.
@@ -75,17 +75,17 @@ map('o', 'ac', '<Plug>(coc-classobj-a)', {silent = true})
 
 -- Add `:Format` command to format current buffer.
 vim.cmd [[
-    command! -nargs=0 Format :call CocAction('format')
+  command! -nargs=0 Format :call CocAction('format')
 ]]
 
 -- Add `:Fold` command to fold current buffer.
 vim.cmd [[
-    command! -nargs=? Fold :call CocAction('fold', <f-args>)
+  command! -nargs=? Fold :call CocAction('fold', <f-args>)
 ]]
 
 -- Add `:OR` command for organize imports of the current buffer.
 vim.cmd [[
-    command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport')
+  command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport')
 ]]
 
 -- Mappings for CocList

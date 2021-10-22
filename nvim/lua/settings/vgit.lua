@@ -1,7 +1,7 @@
 require('vgit').setup({
-    controller = {
-        blames_enabled = false,
-    },
+  controller = {
+    blames_enabled = false,
+  },
 })
 
 map('n', ']h', ':VGit hunk_down<cr>', {noremap = true, silent = true})
