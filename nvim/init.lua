@@ -11,10 +11,6 @@ execute = vim.api.nvim_command
 opts = {noremap = true, silent = true}
 exopts = {noremap = true, silent = true, expr = true}
 waitopts = {noremap = true, silent = true, nowait = true}
-
-local t = function(str)
-  return vim.api.nvim_replace_termcodes(str, true, true, true)
-end
 -- }}}
 
 -----------Settings----------- {{{
