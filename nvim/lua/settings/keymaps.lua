@@ -1,5 +1,5 @@
 -----------Basic----------- {{{
-vim.g.localleader = ','
+vim.g.maplocalleader = ','
 map('n', ';', ':', {noremap = true})
 map('n', '<leader>sc', ':luafile $MYVIMRC<cr>', opts)
 map('n', '<leader>sl', ':lua <C-R><C-L><cr>', {noremap = true})
@@ -40,6 +40,10 @@ map('n', '<Down>', ':resize -2<cr>', opts)
 -- map('n', '[b', ':bprevious<cr>`"', opts)
 map('n', '<BS>', '<C-^>', opts)
 -- }}}
+
+-----------Terminal----------- {{{
+map('t', '<Esc>', '<C-\\><C-N>', opts)
+--}}}
 
 -----------Quickfix and Location list----------- {{{
 map('n', ']c', ':cnext<cr>', opts)
