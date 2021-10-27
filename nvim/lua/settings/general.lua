@@ -5,7 +5,7 @@ vim.opt.errorbells = false
 vim.opt.ttimeoutlen = 5
 
 vim.opt.directory = vim.fn.expand('~/swapfiles')
-vim.g.python3_host_prog = vim.fn.expand('~/anaconda3/bin/python3.8')
+vim.g.python3_host_prog = vim.fn.expand('/usr/bin/python3.9')
 
 vim.opt.termguicolors = true
 vim.cmd 'colorscheme onedark'
@@ -95,3 +95,8 @@ vim.g.UltiSnipsSnippetDirectories = {'UltiSnips', 'my_snippets'}
 vim.g.NERDTreeNaturalSort = 1
 vim.g.NERDTreeWinSize = 39
 -- }}}
+
+-----------Vim Slime----------- {{{
+vim.g.slime_target = 'tmux'
+vim.g.slime_default_config = {socket_name = 'default', target_pane = ':.2'}
+--}}}

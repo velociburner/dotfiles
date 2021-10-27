@@ -36,6 +36,10 @@ Plug 'nvim-telescope/telescope.nvim' -- requires ripgrep for live grep
 ---Git---
 Plug 'tanvirtin/vgit.nvim'
 
+---REPL---
+Plug 'hkupty/iron.nvim'
+Plug 'jpalardy/vim-slime'
+
 ---Style---
 Plug 'hoob3rt/lualine.nvim'
 Plug 'akinsho/bufferline.nvim'
