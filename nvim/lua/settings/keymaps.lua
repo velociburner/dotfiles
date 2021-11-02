@@ -56,12 +56,12 @@ map('n', '[l', ':lprevious<cr>', opts)
 -----------Spelling----------- {{{
 map('n', '<leader>ss', ':set spell!<cr>', opts)
 vim.cmd 'iabbrev slef self'
-vim.cmd 'iabbrev funtino function'
+vim.cmd 'iabbrev functino function'
 -- }}}
 
 -----------Motions----------- {{{
-map('n', 'j', 'gj', opts)
-map('n', 'k', 'gk', opts)
+map('', 'j', 'gj', opts)
+map('', 'k', 'gk', opts)
 map('', 'gh', '^', opts)
 map('', 'gl', '$', opts)
 
@@ -89,7 +89,6 @@ map('v', '<C-k>', ":m'>-2<cr>gv=gv", opts)
 -- }}}
 
 -----------File edits----------- {{{
-map('n', '<Space>r', 'R', opts)
 map('n', '<Space><Space>', 'a<Space><Esc>h', opts)
 map('n', '<Space>o', 'mzo<Esc>k`z', opts)
 map('n', '<Space>O', 'mzO<Esc>j`z', opts)
@@ -97,8 +96,9 @@ map('n', '<Space>O', 'mzO<Esc>j`z', opts)
 vim.cmd [[
   augroup AddLineEnd
     autocmd!
-    autocmd Filetype java,c,cpp nnoremap <Space>; mzA;<Esc>`z
-    autocmd Filetype python nnoremap <Space>; mzA:<Esc>`z
+    autocmd Filetype java,c,cpp nnoremap <localleader>; mzA;<Esc>`z
+    autocmd Filetype python nnoremap <localleader>: mzA:<Esc>`z
+    autocmd Filetype json,python nnoremap <localleader>, mzA,<Esc>`z
   augroup END
 ]]
 
@@ -118,8 +118,8 @@ map('n', 'N', '"nN"[v:searchforward] . "zz"', exopts)
 -- }}}
 
 -----------Marks----------- {{{
-map('n', '`', "'", {noremap = true})
-map('n', "'", '`', {noremap = true})
+map('n', '`', "'", opts)
+map('n', "'", '`', opts)
 -- }}}
 
 -----------NERDTree----------- {{{
