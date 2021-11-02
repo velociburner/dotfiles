@@ -5,7 +5,7 @@ vim.opt.errorbells = false
 vim.opt.ttimeoutlen = 5
 
 vim.opt.directory = vim.fn.expand('~/swapfiles')
-vim.g.python3_host_prog = vim.fn.expand('/usr/bin/python3.9')
+vim.g.python3_host_prog = vim.fn.expand('~/anaconda3/bin/python3')
 
 vim.opt.termguicolors = true
 vim.cmd 'colorscheme onedark'
@@ -86,9 +86,7 @@ vim.cmd [[
 
 -----------Snippets----------- {{{
 vim.g.UltiSnipsEnableSnipMate = 0
-vim.g.UltiSnipsSnippetsDir = '~/dotfiles/my_snippets'
 vim.opt.runtimepath:prepend('~/dotfiles')
-vim.g.UltiSnipsSnippetDirectories = {'UltiSnips', 'my_snippets'}
 -- }}}
 
 -----------NERDTree----------- {{{

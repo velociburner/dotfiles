@@ -47,15 +47,11 @@ snippet begin "begin/end environment" bA
 \end{$1}
 endsnippet
 
-snippet txt "text" w
-\text{${VISUAL}$1}$0
-endsnippet
-
 snippet bf "bold" w
 \textbf{${VISUAL}$1}$0
 endsnippet
 
-snippet ita "italics" w
+snippet it "italics" w
 \textit{${VISUAL}$1}$0
 endsnippet
 
@@ -125,6 +121,11 @@ snippet dm "Display math" wA
 \[
 $1
 .\]$0
+endsnippet
+
+context "math()"
+snippet '(txt|text)' "text" wrA
+\text{${VISUAL}$1}$0
 endsnippet
 
 context "math()"
@@ -277,7 +278,7 @@ endsnippet
 
 priority 100
 context "math()"
-snippet '(?<!(\\|[a-zA-Z]))(pi|tau|lambda|phi|psi|epsilon|delta|rho|in|exists|forall)' "symbols" rwA
+snippet '(?<!(\\|[a-zA-Z]))(pi|tau|lambda|phi|psi|epsilon|delta|rho|sigma|in|exists|forall)' "symbols" rwA
 \\`!p snip.rv = match.group(2)`
 endsnippet
 
