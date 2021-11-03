@@ -17,9 +17,9 @@ map('n', 'gy', '<Plug>(coc-type-definition)', {silent = true})
 map('n', 'gi', '<Plug>(coc-implementation)', {silent = true})
 map('n', '<space>gr', '<Plug>(coc-references)', {silent = true})
 
-map('n', 'K', 'v:lua.show_documentation()', exopts)
+map('n', 'K', ':lua show_documentation()<cr>', opts)
 
-_G.show_documentation = function()
+show_documentation = function()
   local filetype = vim.bo.filetype
 
   if filetype == 'vim' or filetype == 'help' then
