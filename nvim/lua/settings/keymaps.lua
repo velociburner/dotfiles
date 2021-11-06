@@ -60,8 +60,10 @@ vim.cmd 'iabbrev functino function'
 -- }}}
 
 -----------Motions----------- {{{
-map('', 'j', 'gj', opts)
-map('', 'k', 'gk', opts)
+map('n', 'j', 'gj', opts)
+map('x', 'j', 'gj', opts)
+map('n', 'k', 'gk', opts)
+map('x', 'k', 'gk', opts)
 map('', 'gh', '^', opts)
 map('', 'gl', '$', opts)
 
