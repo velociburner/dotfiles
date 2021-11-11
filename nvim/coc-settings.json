@@ -4,7 +4,6 @@
         "python.linting.flake8Path": "/usr/bin/flake8",
         "python.linting.flake8Enabled": true,
         "coc.preferences.formatOnSaveFiletypes": [
-                "python",
                 "json",
                 "jsonc"
         ]
