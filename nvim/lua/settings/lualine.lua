@@ -2,8 +2,8 @@ require('lualine').setup {
   options = {
     icons_enabled = true,
     theme = 'onedark',
-    component_separators = {'', ''},
-    section_separators = {'', ''},
+    component_separators = {left = '', right = ''},
+    section_separators = {left = '', right = ''},
     disabled_filetypes = {}
   },
   sections = {
@@ -12,7 +12,6 @@ require('lualine').setup {
     lualine_c = {'filename'},
     lualine_x = {
       'encoding',
-      {'fileformat', icon = ''},
       {'filetype', icon = ''}
     },
     lualine_y = {'progress'},
