@@ -1,10 +1,4 @@
 -- https://vonheikemen.github.io/devlog/tools/configuring-neovim-using-lua/
------------Runtimepath----------- {{{
-vim.opt.runtimepath:prepend('~/.vim')
-vim.opt.runtimepath:append('~/.vim/after')
-vim.g.packpath = vim.g.runtimepath
--- }}}
-
 -----------Lua globals----------- {{{
 map = vim.api.nvim_set_keymap
 execute = vim.api.nvim_command
@@ -14,7 +8,7 @@ waitopts = {noremap = true, silent = true, nowait = true}
 -- }}}
 
 -----------Settings----------- {{{
-require('settings.plugins')
+require('settings.packer')
 require('settings.keymaps')
 require('settings.general')
 require('settings.lualine')

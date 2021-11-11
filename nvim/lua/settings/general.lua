@@ -86,6 +86,7 @@ vim.cmd [[
 
 -----------Snippets----------- {{{
 vim.g.UltiSnipsEnableSnipMate = 0
+vim.opt.runtimepath:prepend('~/.local/share/nvim/site/pack/packer/start/vim-snippets')
 vim.opt.runtimepath:prepend('~/dotfiles')
 -- }}}
 
