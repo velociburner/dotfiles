@@ -101,6 +101,7 @@ vim.cmd [[
     autocmd Filetype java,c,cpp nnoremap <localleader>; mzA;<Esc>`z
     autocmd Filetype python nnoremap <localleader>: mzA:<Esc>`z
     autocmd Filetype json,python nnoremap <localleader>, mzA,<Esc>`z
+    autocmd Filetype tex nnoremap <localleader>\ mzA \\<Esc>`z
   augroup END
 ]]
 
@@ -110,6 +111,13 @@ map('n', '<Space>p', '"0p', opts)
 map('n', '<Space>P', '"0P', opts)
 map('n', '<leader>p', '"*p', opts)
 map('n', '<leader>P', '"*P', opts)
+map('x', '<leader>p', '"*p', opts)
+map('x', '<leader>P', '"*P', opts)
+
+map('n', '<leader>y', '"*y', opts)
+map('n', '<leader>Y', '"*Y', opts)
+map('x', '<leader>y', '"*y', opts)
+map('x', '<leader>Y', '"*Y', opts)
 
 map('n', '<leader>es', ':UltiSnipsEdit<cr>', opts)
 -- }}}
