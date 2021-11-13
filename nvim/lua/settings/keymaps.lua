@@ -1,6 +1,7 @@
 -----------Basic----------- {{{
 vim.g.maplocalleader = ','
 map('n', ';', ':', {noremap = true})
+map('x', ';', ':', {noremap = true})
 map('n', '<leader>sc', ':luafile $MYVIMRC<cr>', opts)
 map('n', '<leader>sl', ':lua <C-R><C-L><cr>', {noremap = true})
 map('n', '<leader>sv', ':<C-R><C-L><cr>', {noremap = true})
@@ -92,7 +93,7 @@ map('x', '<C-_>', 'gc', {})
 map('n', '<Space>j', ':m.+1<cr>==', opts)
 map('n', '<Space>k', ':m.-2<cr>==', opts)
 map('v', '<C-j>', ":m'>+1<cr>gv=gv", opts)
-map('v', '<C-k>', ":m'>-2<cr>gv=gv", opts)
+map('v', '<C-k>', ":m'<-2<cr>gv=gv", opts)
 -- }}}
 
 -----------File edits----------- {{{
