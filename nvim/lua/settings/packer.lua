@@ -40,6 +40,7 @@ return require('packer').startup(function()
       'hrsh7th/cmp-nvim-lua'
     }
   }
+  use 'ray-x/lsp_signature.nvim'
 
   ---Fuzzy finder---
   use 'nvim-lua/plenary.nvim'
