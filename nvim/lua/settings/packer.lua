@@ -56,4 +56,5 @@ return require('packer').startup(function()
   use 'akinsho/bufferline.nvim'
   use 'navarasu/onedark.nvim'
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+  use 'nvim-treesitter/nvim-treesitter-textobjects'
 end)
