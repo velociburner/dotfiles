@@ -33,3 +33,6 @@ local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protoco
 require('lspconfig')['pyright'].setup {
   capabilities = capabilities
 }
+
+-- If you want insert `(` after select function or method item
+cmp.event:on( 'confirm_done', require('nvim-autopairs.completion.cmp').on_confirm_done())

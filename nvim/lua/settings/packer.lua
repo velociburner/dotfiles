@@ -6,7 +6,7 @@ return require('packer').startup(function()
   use 'tpope/vim-surround'
   use 'tpope/vim-repeat'
   use 'tpope/vim-commentary'
-  use 'jiangmiao/auto-pairs'
+  use 'windwp/nvim-autopairs'
   use 'ggandor/lightspeed.nvim'
   use 'vim-scripts/ReplaceWithRegister'
   use { 'preservim/nerdtree', cmd = {'NERDTree', 'NERDTreeToggle'} }
