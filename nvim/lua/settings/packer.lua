@@ -26,8 +26,9 @@ return require('packer').startup(function()
   ---VimTex---
   use { 'lervag/vimtex', ft = {'tex', 'bibtex'} }
 
-  ---Autocomplete---
-  use { 'neoclide/coc.nvim', branch = 'release' } -- requires nodejs and npm
+  ---LSP---
+  -- use { 'neoclide/coc.nvim', branch = 'release' } -- requires nodejs and npm
+  use 'neovim/nvim-lspconfig'
 
   ---Fuzzy finder---
   use 'nvim-lua/plenary.nvim'

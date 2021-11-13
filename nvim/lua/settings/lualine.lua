@@ -19,7 +19,7 @@ require('lualine').setup {
       'location()',
       {
         'diagnostics',
-        sources = {'coc'},
+        sources = {'nvim_lsp'},
         sections = {'error', 'warn', 'info', 'hint'},
         symbols = {error = 'E', warn = 'W', info = 'I', hint = 'H'}
       }
