@@ -83,6 +83,11 @@ map('n', ')', 'f)', opts)
 map('n', '(', 'F(', opts)
 -- }}}
 
+-----------Comments----------- {{{
+map('n', '<C-_>', 'gcc', {})
+map('x', '<C-_>', 'gc', {})
+-- }}}
+
 -----------Move lines----------- {{{
 map('n', '<Space>j', ':m.+1<cr>==', opts)
 map('n', '<Space>k', ':m.-2<cr>==', opts)
