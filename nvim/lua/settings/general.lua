@@ -12,6 +12,8 @@ vim.cmd 'colorscheme onedark'
 -- }}}
 
 -----------Autocomplete----------- {{{
+vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
+
 vim.opt.wildmenu = true
 vim.opt.wildignorecase = true
 vim.opt.wildmode = 'list:longest,full'

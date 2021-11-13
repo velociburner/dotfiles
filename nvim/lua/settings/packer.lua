@@ -30,6 +30,17 @@ return require('packer').startup(function()
   -- use { 'neoclide/coc.nvim', branch = 'release' } -- requires nodejs and npm
   use 'neovim/nvim-lspconfig'
 
+  ---Autocomplete---
+  use {
+    'hrsh7th/nvim-cmp',
+    requires = {
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-nvim-lua'
+    }
+  }
+
   ---Fuzzy finder---
   use 'nvim-lua/plenary.nvim'
   use 'nvim-telescope/telescope.nvim' -- requires ripgrep for live grep
