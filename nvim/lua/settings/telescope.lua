@@ -1,7 +1,7 @@
 tb = require('telescope.builtin')
 
 -- Resume last command
-map('n', '<leader>tr', '<cmd>lua tb.resume()<cr>', opts)
+map('n', '<leader>fr', '<cmd>lua tb.resume()<cr>', opts)
 
 -- Find files using Telescope command-line sugar.
 map('n', '<leader>ff', '<cmd>lua require("settings.telescope").project_files()<cr>', opts)
@@ -11,7 +11,6 @@ map('n', '<leader>fh', '<cmd>lua tb.help_tags()<cr>', opts)
 
 -- Vim info
 map('n', '<leader>fc', '<cmd>lua tb.commands()<cr>', opts)
-map('n', '<leader>fr', '<cmd>lua tb.registers()<cr>', opts)
 map('n', '<leader>fk', '<cmd>lua tb.keymaps()<cr>', opts)
 
 -- Treesitter outline
