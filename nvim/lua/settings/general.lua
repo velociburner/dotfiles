@@ -1,6 +1,7 @@
 -----------General----------- {{{
 vim.opt.number = true
 vim.opt.showcmd = false
+vim.wo.signcolumn = 'yes'
 vim.opt.errorbells = false
 vim.opt.ttimeoutlen = 5
 
@@ -8,6 +9,7 @@ vim.opt.directory = vim.fn.expand('~/swapfiles')
 vim.g.python3_host_prog = vim.fn.expand('~/anaconda3/bin/python3')
 
 vim.opt.termguicolors = true
+vim.g.onedark_style = 'warm'
 vim.cmd 'colorscheme onedark'
 -- }}}
 
