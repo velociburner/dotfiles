@@ -8,7 +8,7 @@ vim.cmd [[highlight IndentBlanklineIndent6 guifg=#C678DD gui=nocombine]]
 require('indent_blankline').setup {
   --space_char_blankline = " ",
   buftype_exclude = {'help', 'terminal'},
-  filetype_exclude = {'markdown', 'packer', 'text'},
+  filetype_exclude = {'lspinfo', 'markdown', 'packer', 'text'},
   char_highlight_list = {
     'IndentBlanklineIndent1',
     'IndentBlanklineIndent2',
