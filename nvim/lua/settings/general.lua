@@ -34,6 +34,15 @@ vim.cmd [[
 ]]
 -- }}}
 
+-----------Highlight Yank-----------{{{
+vim.cmd [[
+  augroup HighlightYank
+    autocmd!
+    autocmd TextYankPost * silent! lua require('vim.highlight').on_yank({ higroup = 'IncSearch', timeout = 500 })
+  augroup END
+]]
+-- }}}
+
 -----------Search Options----------- {{{
 vim.opt.hlsearch = false
 vim.opt.ignorecase = true
