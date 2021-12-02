@@ -101,16 +101,6 @@ map('n', '<Space><Space>', 'a<Space><Esc>h', opts)
 map('n', '<Space>o', 'mzo<Esc>k`z', opts)
 map('n', '<Space>O', 'mzO<Esc>j`z', opts)
 
-vim.cmd [[
-  augroup AddLineEnd
-    autocmd!
-    autocmd Filetype java,c,cpp nnoremap <localleader>; mzA;<Esc>`z
-    autocmd Filetype python nnoremap <localleader>: mzA:<Esc>`z
-    autocmd Filetype json,python nnoremap <localleader>, mzA,<Esc>`z
-    autocmd Filetype tex nnoremap <localleader>\ mzA \\<Esc>`z
-  augroup END
-]]
-
 map('n', 'cp', 'yap<S-}>p', opts)
 
 map('n', '<Space>p', '"0p', opts)
