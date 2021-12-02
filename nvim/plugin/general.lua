@@ -100,7 +100,6 @@ vim.cmd [[
 -----------Snippets----------- {{{
 vim.g.UltiSnipsEnableSnipMate = 0
 vim.opt.runtimepath:prepend('~/.local/share/nvim/site/pack/packer/start/vim-snippets')
-vim.opt.runtimepath:prepend('~/dotfiles')
 -- }}}
 
 -----------NERDTree----------- {{{
@@ -111,4 +110,4 @@ vim.g.NERDTreeWinSize = 39
 -----------Vim Slime----------- {{{
 vim.g.slime_target = 'tmux'
 vim.g.slime_default_config = {socket_name = 'default', target_pane = ':.2'}
---}}}
+-- }}}
