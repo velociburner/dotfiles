@@ -1,0 +1,64 @@
+snippet header "standard Vim script file header"
+" File: ${1:`!v expand('%:t')`}
+" Author: ${2:`!v g:snips_author`}
+" Description: ${3}
+${0:" Last Modified: `!v strftime("%B %d, %Y")`}
+endsnippet
+
+snippet fun "function"
+function `!v expand('%:p:h:t') =~ 'autoload' ? substitute(matchstr(expand('%:p'),'autoload/\zs.*\ze.vim'),'[/\\]','#','g').'#' : ''`${1:function_name}(${3})
+	${0}
+endfunction
+endsnippet
+
+snippet try "try ... catch statement"
+try
+	${1:${VISUAL}}
+catch ${2}
+	${0}
+endtry
+endsnippet
+
+snippet for "for ... in loop"
+for ${1} in ${2}
+	${0:${VISUAL}}
+endfor
+endsnippet
+
+snippet forkv "for [key, value] in loop"
+for [${1},${2}] in items(${3})
+	${0}
+	unlet ${1} ${2}
+endfor
+endsnippet
+
+snippet wh "while loop"
+while ${1}
+	${0:${VISUAL}}
+endwhile
+endsnippet
+
+snippet if "if statement"
+if ${1}
+	${0:${VISUAL}}
+endif
+endsnippet
+
+snippet ife "if ... else statement"
+if ${1}
+	${2:${VISUAL}}
+else
+	${0}
+endif
+endsnippet
+
+snippet au "autocmd block"
+augroup ${1:AU_NAME}
+	autocmd!
+	${0:${VISUAL}}
+augroup END
+endsnippet
+
+snippet cmd "command definition"
+command! -nargs=${1:0} ${2:Name} ${0}
+endsnippet
