@@ -38,6 +38,14 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<localleader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
   buf_set_keymap('x', '<localleader>f', '<Esc><cmd>lua vim.lsp.buf.range_formatting()<CR>', opts)
 
+  vim.cmd [[
+    augroup DocumentHighlight
+        autocmd!
+        autocmd CursorHold,CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()
+        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+    augroup END
+  ]]
+
 end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
