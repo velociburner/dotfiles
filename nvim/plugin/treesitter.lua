@@ -1,7 +1,7 @@
 -- https://github.com/rockerBOO/awesome-neovim#tree-sitter-supported-colorscheme
 require('nvim-treesitter.configs').setup {
   -- Modules and its options go here
-  ensure_installed = {'bash', 'json', 'lua', 'python', 'vim'},
+  ensure_installed = {'bash', 'json', 'lua', 'python', 'query', 'vim'},
 
   highlight = {
     enable = true,
