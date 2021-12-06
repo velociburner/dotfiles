@@ -68,10 +68,17 @@ map('x', 'k', 'gk', opts)
 map('', 'gh', '^', opts)
 map('', 'gl', '$', opts)
 
-map('i', '<C-J>', '<C-O>j', opts)
-map('i', '<C-K>', '<C-O>k', opts)
-map('i', '<C-L>', '<Esc>la', opts)
-map('i', '<C-H>', '<Esc>i', opts)
+map('i', '<M-j>', '<C-O>j', opts)
+map('i', '<M-k>', '<C-O>k', opts)
+map('i', '<M-l>', '<C-O>l', opts)
+map('i', '<M-h>', '<C-O>h', opts)
+
+map('i', '<M-b>', '<C-O>b', opts)
+map('i', '<M-B>', '<C-O>B', opts)
+map('i', '<M-w>', '<C-O>w', opts)
+map('i', '<M-W>', '<C-O>W', opts)
+map('i', '<M-e>', '<C-O>e<Right>', opts)
+map('i', '<M-E>', '<C-O>E<Right>', opts)
 -- }}}
 
 -----------Text objects----------- {{{
