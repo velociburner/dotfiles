@@ -1,6 +1,6 @@
 function functions#OpenTemplate()
-    if filereadable('template.txt')
-        0read template.txt
+    if filereadable('template')
+        0read template
     else
         echohl WarningMsg
         echom 'Template file does not exist in the current directory'
