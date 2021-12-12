@@ -9,6 +9,7 @@ local on_attach = function(client, bufnr)
   -- Add lsp_signature on attach
   require("lsp_signature").on_attach({
     bind = true,
+    max_height = 0,
     handler_opts = {
       border = "rounded"
     }
