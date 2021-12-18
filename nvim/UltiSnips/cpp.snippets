@@ -1,0 +1,19 @@
+snippet inc "include" b
+#include <${1}>${0}
+endsnippet
+
+snippet cout "print" b
+std::cout << ${1} << "\n";${0}
+endsnippet
+
+snippet for "for loop"
+for (${2:i} = 0; $2 < ${1:count}; ${3:$2++}) {
+	${VISUAL}$0
+}
+endsnippet
+
+snippet fori "for int loop"
+for (int ${2:i} = 0; $2 < ${1:count}; ${3:$2++}) {
+	${VISUAL}${0}
+}
+endsnippet
