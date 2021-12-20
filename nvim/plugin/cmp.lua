@@ -38,5 +38,9 @@ require('lspconfig')['clangd'].setup {
   capabilities = capabilities
 }
 
+require('lspconfig')['hls'].setup {
+  capabilities = capabilities
+}
+
 -- If you want insert `(` after select function or method item
 cmp.event:on( 'confirm_done', require('nvim-autopairs.completion.cmp').on_confirm_done())
