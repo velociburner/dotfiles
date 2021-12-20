@@ -76,3 +76,7 @@ vim.g.NERDTreeWinSize = 39
 vim.g.slime_target = 'tmux'
 vim.g.slime_default_config = {socket_name = 'default', target_pane = ':.2'}
 -- }}}
+
+-----------Vimtex----------- {{{
+vim.g.vimtex_view_method = 'zathura'
+--}}}
