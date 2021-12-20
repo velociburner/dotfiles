@@ -127,6 +127,12 @@ echo "${fg[blue]} |    |   \\${fg[cyan]}|    |    "
 echo "${fg[blue]} |______  /${fg[cyan]}|____|    "
 echo "${fg[blue]}        \\/"
 
+# WSL2 X-Server
+# https://andrewyazura.medium.com/how-to-run-gui-apps-on-wsl-and-wsl2-25fd4781a53b
+export XDG_CONFIG_HOME=/home/joshbp/
+export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0
+export LIBGL_ALWAYS_INDIRECT=1
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
