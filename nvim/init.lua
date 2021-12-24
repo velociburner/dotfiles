@@ -79,4 +79,5 @@ vim.g.slime_default_config = {socket_name = 'default', target_pane = ':.2'}
 
 -----------Vimtex----------- {{{
 vim.g.vimtex_view_method = 'zathura'
+vim.g.vimtex_quickfix_autoclose_after_keystrokes = 2
 --}}}
