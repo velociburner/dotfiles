@@ -1,7 +1,6 @@
 augroup AutoRead
     autocmd!
     autocmd FocusGained,BufEnter * checktime
-    autocmd BufWritePost $MYVIMRC source $MYVIMRC
 augroup END
 
 augroup HighlightYank
