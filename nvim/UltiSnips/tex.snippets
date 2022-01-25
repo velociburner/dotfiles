@@ -81,6 +81,7 @@ snippet visual "figure packages"
 \usepackage{subcaption}
 \usepackage{rotating}
 \usepackage{tikz}
+\usepackage{pdfpages}
 endsnippet
 
 #(old option) \\usepackage{tikz-qtree-compat}
@@ -120,11 +121,11 @@ endsnippet
 snippet dm "Display math" wA
 \[
 $1
-.\]$0
+\]$0
 endsnippet
 
 context "math()"
-snippet '(txt|text)' "text" wrA
+snippet txt "text" wA
 \text{${VISUAL}$1}$0
 endsnippet
 
@@ -417,19 +418,19 @@ snippet xp "generic constituent" wA
 [${1:X}P
 	[${2:Spec $1P}]
 	[$1$^\prime$
-		[$1$^0$ [$3]]
+		[$1$^\circ$ [$3]]
 		$0
 	]
 ]
 endsnippet
 
 context "env('forest')"
-snippet yp "generic adjunct"
+snippet yp "generic adjunct" wA
 [${1:Y}P
 	[$1P
 		[${2:Spec $1P}]
 		[$1$^\prime$
-			[$1$^0$ [$3]]
+			[$1$^\circ$ [$3]]
 			$0
 		]
 	]
@@ -440,6 +441,11 @@ endsnippet
 context "env('forest')"
 snippet draw "trace arrows"
 \draw[->] (${1:source}) to[out=${3}, in=${4}] (${2:target});
+endsnippet
+
+context "math()"
+snippet '(\\circ) ?conj' "Verb conjugation/agreement" wrA
+`!p snip.rv = match.group(1)`_{[\text{${0:Bare}}]}
 endsnippet
 
 # Linguistics examples
