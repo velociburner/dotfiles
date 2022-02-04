@@ -398,7 +398,7 @@ endsnippet
 
 # ==========Linguistics==========
 # Syntax trees
-snippet tree "qtree"
+snippet qtree "qtree"
 \Tree[.${1: Root node} [.${2} ][.${0} ] ]
 endsnippet
 
@@ -411,6 +411,20 @@ endsnippet
 
 snippet node "qtree branch"
 [.${1} ]${0}
+endsnippet
+
+snippet tree "tree example" b
+\ex[exnotype=roman, tag=tree:$1$2]
+${1:D/S}-Structure for sentence (${2})
+\xe
+\begin{forest}
+for tree = {s sep = 1cm},
+$0
+\end{forest}
+endsnippet
+
+snippet tref "tree reference" wA
+\getref{tree:$1}$0
 endsnippet
 
 context "env('forest')"
@@ -444,8 +458,8 @@ snippet draw "trace arrows"
 endsnippet
 
 context "math()"
-snippet '(\\circ) ?conj' "Verb conjugation/agreement" wrA
-`!p snip.rv = match.group(1)`_{[\text{${0:Bare}}]}
+snippet conj "Verb conjugation/agreement" iA
+_{[\text{${0:Bare}}]}
 endsnippet
 
 # Linguistics examples
