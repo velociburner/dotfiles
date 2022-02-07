@@ -1,6 +1,8 @@
 require('vgit').setup({
-  controller = {
-    blames_enabled = false,
+  settings = {
+    live_blame = {
+      enabled = false,
+    },
   },
 })
 
@@ -16,4 +18,4 @@ map('n', '<leader>gp', ':VGit project_diff_preview<cr>', opts)
 map('n', '<leader>gl', ':VGit buffer_history_preview<cr>', opts)
 map('n', '<leader>gr', ':VGit buffer_reset<cr>', opts)
 map('n', '<leader>gx', ':VGit toggle_diff_preference<cr>', opts)
-map('n', '<leader>gt', ':VGit toggle_buffer_blames<cr>', opts)
+map('n', '<leader>gt', ':VGit toggle_live_blame<cr>', opts)
