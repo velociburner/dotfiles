@@ -2,6 +2,7 @@
 vim.g.maplocalleader = ','
 map('n', ';', ':', {noremap = true})
 map('x', ';', ':', {noremap = true})
+map('x', '.', ':norm! .<cr>', opts)
 map('n', '<leader>sc', ':luafile $MYVIMRC<cr>', opts)
 map('n', '<leader>sl', ':lua <C-R><C-L><cr>', {noremap = true})
 map('n', '<leader>sv', ':<C-R><C-L><cr>', {noremap = true})
