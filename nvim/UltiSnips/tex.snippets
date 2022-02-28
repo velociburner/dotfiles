@@ -1,3 +1,5 @@
+priority 1
+
 global !p
 
 def create_matrix(snip):
@@ -70,6 +72,17 @@ snippet template "template packages and settings"
 \usepackage[letterpaper]{geometry}
 \usepackage[doublespacing]{setspace}
 \usepackage[utf8]{inputenc}
+
+\title{${1:Title}}
+\author{Josh Broderick Phillips}
+\date{Due: `!v strftime("%B")` ${2:`!v strftime("%d")`}, `!v strftime("%Y")`}
+
+\begin{document}
+
+\maketitle
+
+${0}
+\end{document}
 endsnippet
 
 snippet math "math packages"
@@ -92,13 +105,16 @@ snippet ling "linguistics packages"
 \usepackage{expex}
 \usepackage[linguistics]{forest}
 \forestset{nice nodes/.style={for tree={inner sep=0}}, default preamble=nice nodes}
+
+\lingset{numoffset=\parindent}
+\excnt=100
 endsnippet
 
 # Title heading
 snippet header "title heading"
 \title{${1:Title}}
 \author{Josh Broderick Phillips}
-\date{Due: `!v strftime("%B %d, %Y")`${0}}
+\date{Due: `!v strftime("%B")` ${2:`!v strftime("%d")`}, `!v strftime("%Y")`}${0}
 endsnippet
 
 # ==========MATH==========
@@ -423,8 +439,8 @@ $0
 \end{forest}
 endsnippet
 
-snippet tref "tree reference" wA
-\getref{tree:$1}$0
+snippet "([a-z]+)ref" "expex example reference" rw
+\getref{`!p snip.rv = match.group(1)`:$1}$0
 endsnippet
 
 context "env('forest')"
@@ -432,7 +448,9 @@ snippet xp "generic constituent" wA
 [${1:X}P
 	[${2:Spec $1P}]
 	[$1$^\prime$
-		[$1$^\circ$ [$3]]
+		[$1$^\circ$
+			[$3]
+		]
 		$0
 	]
 ]
@@ -444,7 +462,9 @@ snippet yp "generic adjunct" wA
 	[$1P
 		[${2:Spec $1P}]
 		[$1$^\prime$
-			[$1$^\circ$ [$3]]
+			[$1$^\circ$
+				[$3]
+			]
 			$0
 		]
 	]
@@ -457,13 +477,18 @@ snippet draw "trace arrows"
 \draw[->] (${1:source}) to[out=${3}, in=${4}] (${2:target});
 endsnippet
 
-context "math()"
-snippet conj "Verb conjugation/agreement" iA
-_{[\text{${0:Bare}}]}
+context "env('forest')"
+snippet agr "Verb conjugation/agreement" i
+\\\\ \text{[${1:Bare}]}$0
+endsnippet
+
+context "env('forest')"
+snippet tense "Tense agreement (finite)" i
+\\\\ $\begin{bmatrix} \text{Fin} \\\\ \text{${1:3SgPres}} \end{bmatrix}$$0
 endsnippet
 
 # Linguistics examples
-snippet expex "expex examples"
+snippet gloss "gloss examples"
 \ex[exno=${1}]
 \begingl
 \gla ${2} //
