@@ -104,7 +104,19 @@ snippet ling "linguistics packages"
 \usepackage{syntax}
 \usepackage{expex}
 \usepackage[linguistics]{forest}
-\forestset{nice nodes/.style={for tree={inner sep=0}}, default preamble=nice nodes}
+\forestset{
+  nice nodes/.style={for tree={inner sep=0}},
+  default preamble=nice nodes,
+  roof/.style={
+    for children={
+      if n=1{
+        edge path'={
+          (.parent first) -- (!u.parent anchor) -- (!ul.parent last) -- cycle
+        }
+      }{no edge}
+    }
+  }
+}
 
 \lingset{numoffset=\parindent}
 \excnt=100
