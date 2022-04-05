@@ -118,7 +118,7 @@ snippet ling "linguistics packages"
   }
 }
 
-\lingset{numoffset=\parindent}
+\lingset{numoffset=\parindent, extraglskip=-10pt, aboveglbskip=-5pt, interpartskip=0pt}
 \excnt=100
 endsnippet
 
@@ -455,6 +455,10 @@ snippet "([a-z]+)ref" "expex example reference" rw
 \getref{`!p snip.rv = match.group(1)`:$1}$0
 endsnippet
 
+snippet "([a-z]+)reff" "expex example full reference" rw
+\getfullref{`!p snip.rv = match.group(1)`:$1}$0
+endsnippet
+
 context "env('forest')"
 snippet xp "generic constituent" wA
 [${1:X}P
@@ -501,11 +505,9 @@ endsnippet
 
 # Linguistics examples
 snippet gloss "gloss examples"
-\ex[exno=${1}]
 \begingl
 \gla ${2} //
 \glb ${3} //
 \glft ${4} //
 \endgl
-\xe
 endsnippet
