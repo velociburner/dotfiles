@@ -18,6 +18,8 @@ vim.opt.directory = vim.fn.expand('~/swapfiles')
 vim.g.python3_host_prog = vim.fn.expand('~/anaconda3/bin/python3')
 
 vim.opt.termguicolors = true
+
+vim.opt.mouse = ""
 -- }}}
 
 -----------Autocomplete----------- {{{
