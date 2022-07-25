@@ -21,7 +21,7 @@ return require('packer').startup(function()
   use 'honza/vim-snippets'
 
   ---Tags---
-  use 'ludovicchabant/vim-gutentags' -- must also install ctags separately
+  -- use 'ludovicchabant/vim-gutentags' -- must also install ctags separately
 
   ---VimTex---
   use { 'lervag/vimtex', ft = {'tex', 'bibtex'} }
