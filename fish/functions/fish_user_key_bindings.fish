@@ -4,3 +4,5 @@ function fish_user_key_bindings
     bind -m default gh beginning-of-line
     bind -m default gl end-of-line
 end
+
+fzf_key_bindings
