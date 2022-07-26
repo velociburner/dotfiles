@@ -35,6 +35,13 @@ alias tad="tmux attach -d -t"
 alias ts="tmux new-session -s"
 alias tl="tmux list-sessions"
 
+# z
+alias zz='z -c'      # restrict matches to subdirs of $PWD
+alias zi='z -i'      # cd with interactive selection
+alias zf='z -I'      # use fzf to select in multiple matches
+alias zb='z -b'      # quickly cd to the parent directory
+alias zh='z -I -t .' # access MRU directories interactively
+
 # other
 alias saud="sudo apt update"
 alias saug="sudo apt upgrade"
