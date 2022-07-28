@@ -12,6 +12,10 @@ if status is-interactive
     # wsl
     set -gx DISPLAY $(awk "/nameserver / {print $2; exit}" /etc/resolv.conf 2>/dev/null):0
     set -gx LIBGL_ALWAYS_INDIRECT 1
+
+    if test -e "/home/joshbp/.ghcup/env"
+        source "/home/joshbp/.ghcup/env" # ghcup-env
+    end
 end
 
 # >>> conda initialize >>>
