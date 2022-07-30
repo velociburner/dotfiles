@@ -69,11 +69,6 @@ map('x', 'k', 'gk', opts)
 map('', 'gh', '^', opts)
 map('', 'gl', '$', opts)
 
-map('i', '<M-j>', '<C-O>j', opts)
-map('i', '<M-k>', '<C-O>k', opts)
-map('i', '<M-l>', '<C-O>l', opts)
-map('i', '<M-h>', '<C-O>h', opts)
-
 map('i', '<M-b>', '<C-O>b', opts)
 map('i', '<M-B>', '<C-O>B', opts)
 map('i', '<M-w>', '<C-O>w', opts)

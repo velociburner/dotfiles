@@ -51,8 +51,8 @@ require('bufferline').setup {
 
 -- These commands will navigate through buffers in order regardless of which mode you are using
 -- e.g. if you change the order of buffers :bnext and :bprevious will not respect the custom ordering
-map('n', '<M-l>', ':BufferLineCycleNext<cr>', opts)
-map('n', '<M-h>', ':BufferLineCyclePrev<cr>', opts)
+map('n', '<space>l', ':BufferLineCycleNext<cr>', opts)
+map('n', '<space>h', ':BufferLineCyclePrev<cr>', opts)
 
 -- These commands will move the current buffer backwards or forwards in the bufferline
 map('n', '<M-S-l>', ':BufferLineMoveNext<cr>', opts)
@@ -64,3 +64,14 @@ map('n', '<leader>bd', ':BufferLineSortByDirectory<cr>', opts)
 
 -- Pick a buffer
 map('n', 'gb', ':BufferLinePick<cr>', opts)
+
+map('n', '<space>1', '<cmd>lua require("bufferline").go_to_buffer(1, true)<cr>', opts)
+map('n', '<space>2', '<cmd>lua require("bufferline").go_to_buffer(2, true)<cr>', opts)
+map('n', '<space>3', '<cmd>lua require("bufferline").go_to_buffer(3, true)<cr>', opts)
+map('n', '<space>4', '<cmd>lua require("bufferline").go_to_buffer(4, true)<cr>', opts)
+map('n', '<space>5', '<cmd>lua require("bufferline").go_to_buffer(5, true)<cr>', opts)
+map('n', '<space>6', '<cmd>lua require("bufferline").go_to_buffer(6, true)<cr>', opts)
+map('n', '<space>7', '<cmd>lua require("bufferline").go_to_buffer(7, true)<cr>', opts)
+map('n', '<space>8', '<cmd>lua require("bufferline").go_to_buffer(8, true)<cr>', opts)
+map('n', '<space>9', '<cmd>lua require("bufferline").go_to_buffer(9, true)<cr>', opts)
+map('n', '<space>0', '<cmd>lua require("bufferline").go_to_buffer(-1, true)<cr>', opts)
