@@ -39,6 +39,11 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 -- }}}
 
+-----------Conceal----------- {{{
+vim.wo.conceallevel = 1
+vim.wo.concealcursor = 'n'
+-- }}}
+
 -----------Folds----------- {{{
 vim.opt.foldlevelstart = 99
 vim.opt.foldnestmax = 2
