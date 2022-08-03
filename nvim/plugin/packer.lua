@@ -54,7 +54,7 @@ return require('packer').startup(function()
 
   ---Style---
   use 'nvim-lualine/lualine.nvim'
-  use 'akinsho/bufferline.nvim'
+  use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
   use {"ellisonleao/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
   use 'folke/tokyonight.nvim'
   use 'navarasu/onedark.nvim'
