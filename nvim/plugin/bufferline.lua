@@ -1,8 +1,6 @@
 require('bufferline').setup {
   options = {
-    numbers = function(opts)
-        return string.format('%s%s', opts.ordinal, opts.raise(opts.id))
-    end,
+    numbers = "ordinal",
     close_command = "bdelete! %d", -- can be a string | function, see "Mouse actions"
     right_mouse_command = nil, -- can be a string | function, see "Mouse actions"
     left_mouse_command = nil,    -- can be a string | function, see "Mouse actions"
@@ -32,10 +30,16 @@ require('bufferline').setup {
     diagnostics = "nvim_lsp",
     diagnostics_update_in_insert = false,
     diagnostics_indicator = function(count, level, diagnostics_dict, context)
-      return "("..count..")"
+      local s = " "
+      for e, n in pairs(diagnostics_dict) do
+        local sym = e == "error" and " "
+        or (e == "warning" and " " or "" )
+        s = s .. n .. sym
+      end
+      return s
     end,
     offsets = {{filetype = "nerdtree", text = "File Explorer", text_align = "left"}},
-    show_buffer_icons = false, -- disable filetype icons for buffers
+    show_buffer_icons = true, -- disable filetype icons for buffers
     show_buffer_close_icons = false,
     show_close_icon = false,
     show_tab_indicators = true,
