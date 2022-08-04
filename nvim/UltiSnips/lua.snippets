@@ -1,0 +1,9 @@
+snippet lf "local function" b
+local function ${1:name}(${2:args})
+	${0:${VISUAL}}
+end
+endsnippet
+
+snippet "([\w\d]+)\s*(\+|\-|\*|\/)= " "syntactic sugar for incrementing/decrementing" rbA
+`!p snip.rv = match.group(1)` = `!p snip.rv = match.group(1)` `!p snip.rv = match.group(2)` $0
+endsnippet
