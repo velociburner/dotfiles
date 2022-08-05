@@ -67,6 +67,10 @@ vim.opt.list = true
 vim.opt.listchars = {trail = '«'}
 -- }}}
 
+-----------Targets----------- {{{
+vim.g.targets_aiAI = 'aIAi'
+-- }}}
+
 -----------Snippets----------- {{{
 vim.g.UltiSnipsEnableSnipMate = 0
 vim.opt.runtimepath:prepend('~/.local/share/nvim/site/pack/packer/start/vim-snippets')
