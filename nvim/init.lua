@@ -27,7 +27,7 @@ vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
 
 vim.opt.wildmenu = true
 vim.opt.wildignorecase = true
-vim.opt.wildmode = 'list:longest,full'
+vim.opt.wildmode = 'longest:full'
 
 vim.opt.updatetime = 100
 vim.opt.shortmess:append('c')
