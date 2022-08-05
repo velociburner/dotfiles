@@ -38,6 +38,7 @@ require('nvim-treesitter.configs').setup {
         ['az'] = '@frame.outer',
         ['if'] = '@function.inner',
         ['af'] = '@function.outer',
+        ['iN'] = '@function.name',
         ['io'] = '@loop.inner',
         ['ao'] = '@loop.outer',
         ['as'] = '@statement.outer',
