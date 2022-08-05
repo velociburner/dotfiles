@@ -39,13 +39,19 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<localleader>f', '<cmd>lua vim.lsp.buf.format({async = true})<CR>', opts)
   buf_set_keymap('x', '<localleader>f', '<Esc><cmd>lua vim.lsp.buf.range_formatting()<CR>', opts)
 
-  vim.cmd [[
-    augroup DocumentHighlight
-        autocmd!
-        autocmd CursorHold,CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()
-        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-    augroup END
-  ]]
+  -- Don't clear the augroup so that a new one is defined for each buffer an
+  -- LSP attaches to after it attaches
+  vim.api.nvim_create_augroup("DocumentHighlight", { clear = false })
+  vim.api.nvim_create_autocmd({"CursorHold", "CursorHoldI"}, {
+    group = "DocumentHighlight",
+    buffer = bufnr,
+    command = "lua vim.lsp.buf.document_highlight()"
+  })
+  vim.api.nvim_create_autocmd("CursorMoved", {
+    group = "DocumentHighlight",
+    buffer = bufnr,
+    command = "lua vim.lsp.buf.clear_references()"
+  })
 
 end
 
