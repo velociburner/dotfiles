@@ -13,6 +13,7 @@ alias gba="git branch -a"
 alias gbd="git branch -d"
 alias gbs="git bisect"
 alias gcm="git commit -m"
+alias gcd=cd_git_root
 alias gco="git checkout"
 alias gd="git diff"
 alias gf="git fetch"
