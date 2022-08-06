@@ -153,6 +153,14 @@ pip install "python-lsp-server[all]"
 pip install mypy pylsp-mypy
 ```
 
+[sumneko_lua](https://github.com/sumneko/lua-language-server)
+
+Download the latest [release](https://github.com/sumneko/lua-language-server/releases) from GitHub and extract the
+project. The name of the directory should be added to the PATH in order for it to connect to Neovim.
+```
+tar -xzf lua-language-server-XX.YY.ZZ-linux-x64.tar.gz -C lua-language-server
+```
+
 #### Telescope
 [ripgrep](https://github.com/BurntSushi/ripgrep)
 ```

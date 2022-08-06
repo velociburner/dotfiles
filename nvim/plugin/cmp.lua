@@ -31,18 +31,14 @@ cmp.setup({
 })
 
 -- Setup lspconfig.
+local nvim_lsp = require('lspconfig')
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-require('lspconfig')['pylsp'].setup {
-  capabilities = capabilities
-}
-
-require('lspconfig')['clangd'].setup {
-  capabilities = capabilities
-}
-
-require('lspconfig')['hls'].setup {
-  capabilities = capabilities
-}
+local servers = { 'pylsp', 'clangd', 'hls', 'sumneko_lua' }
+for _, lsp in ipairs(servers) do
+  nvim_lsp[lsp].setup {
+    capabilities = capabilities
+  }
+end
 
 -- If you want insert `(` after select function or method item
 cmp.event:on( 'confirm_done', require('nvim-autopairs.completion.cmp').on_confirm_done())

@@ -2,6 +2,9 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
     set -U fish_greeting
     # set -gx PATH ~/.local/bin $PATH
+    if test -d "/home/joshbp/lua-language-server/bin"
+        set -gx PATH /home/joshbp/lua-language-server/bin $PATH
+    end
     set -gx EDITOR "nvim"
 
     # vi mode
