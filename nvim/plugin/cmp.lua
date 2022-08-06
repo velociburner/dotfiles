@@ -20,12 +20,12 @@ cmp.setup({
     ['<CR>'] = cmp.mapping.confirm({ select = true }),
   },
   sources = cmp.config.sources({
-    { name = 'nvim_lsp' },
-    { name = 'ultisnips' },
+    { name = 'ultisnips', max_item_count = 3 },
+    { name = 'nvim_lsp', max_item_count = 5 },
   },
   {
-    { name = 'buffer' },
-    { name = 'path' },
+    { name = 'buffer', max_item_count = 5, keyword_length = 4 },
+    { name = 'path', max_item_count = 5 },
     { name = 'nvim_lua' }
   })
 })
