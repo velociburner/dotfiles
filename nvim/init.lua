@@ -1,11 +1,4 @@
 -- https://vonheikemen.github.io/devlog/tools/configuring-neovim-using-lua/
------------Lua globals----------- {{{
-map = vim.keymap.set
-execute = vim.api.nvim_command
-opts = {noremap = true, silent = true}
-exopts = {noremap = true, silent = true, expr = true}
-waitopts = {noremap = true, silent = true, nowait = true}
--- }}}
 
 -----------General----------- {{{
 vim.opt.number = true

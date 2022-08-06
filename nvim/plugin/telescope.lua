@@ -1,28 +1,29 @@
-tb = require('telescope.builtin')
+local map = vim.keymap.set
+local opts = { silent = true }
+local tb = require('telescope.builtin')
 
 -- Resume last command
-map('n', '<leader>fr', '<cmd>lua tb.resume()<cr>', opts)
+map('n', '<leader>fr', '<cmd>Telescope resume<cr>', opts)
 
 -- Find files using Telescope command-line sugar.
 map('n', '<leader>ff', '<cmd>lua project_files()<cr>', opts)
-map('n', '<leader>fg', '<cmd>lua tb.live_grep()<cr>', opts)
-map('n', '<leader>fb', '<cmd>lua tb.buffers()<cr>', opts)
-map('n', '<leader>fh', '<cmd>lua tb.help_tags()<cr>', opts)
+map('n', '<leader>fg', '<cmd>Telescope live_grep<cr>', opts)
+map('n', '<leader>fb', '<cmd>Telescope buffers<cr>', opts)
+map('n', '<leader>fh', '<cmd>Telescope help_tags<cr>', opts)
 
 -- Vim info
-map('n', '<leader>fc', '<cmd>lua tb.commands()<cr>', opts)
-map('n', '<leader>fk', '<cmd>lua tb.keymaps()<cr>', opts)
+map('n', '<leader>fc', '<cmd>Telescope commands<cr>', opts)
+map('n', '<leader>fk', '<cmd>Telescope keymaps<cr>', opts)
 
 -- Treesitter outline
-map('n', '<leader>ft', '<cmd>lua tb.treesitter()<cr>', opts)
+map('n', '<leader>ft', '<cmd>Telescope treesitter<cr>', opts)
 
 -- LSP diagnostics
-map('n', '<leader>fl', '<cmd>lua tb.lsp_document_diagnostics()<cr>', opts)
+map('n', '<leader>fl', '<cmd>Telescope lsp_document_diagnostics<cr>', opts)
 
 project_files = function()
-  local opts = {}
-  local ok = pcall(tb.git_files, opts)
+  local ok = pcall(tb.git_files)
   if not ok then
-    tb.find_files(opts)
+    tb.find_files()
   end
 end

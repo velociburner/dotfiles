@@ -1,3 +1,6 @@
+local map = vim.keymap.set
+local opts = { silent = true }
+
 require('bufferline').setup {
   options = {
     numbers = "ordinal",

@@ -1,11 +1,14 @@
+local map = vim.keymap.set
+local opts = { silent = true }
+
 -----------Basic----------- {{{
 vim.g.maplocalleader = ','
-map('n', ';', ':', {noremap = true})
-map('x', ';', ':', {noremap = true})
+map('n', ';', ':', {})
+map('x', ';', ':', {})
 map('x', '.', ':norm! .<cr>', opts)
 map('n', '<leader>sc', ':luafile $MYVIMRC<cr>', opts)
-map('n', '<leader>sl', ':lua <C-R><C-L><cr>', {noremap = true})
-map('n', '<leader>sv', ':<C-R><C-L><cr>', {noremap = true})
+map('n', '<leader>sl', ':lua <C-R><C-L><cr>', {})
+map('n', '<leader>sv', ':<C-R><C-L><cr>', {})
 -- }}}
 
 -----------Save and quit----------- {{{
@@ -88,8 +91,8 @@ map('n', '(', 'F(', opts)
 -- }}}
 
 -----------Comments----------- {{{
-map('n', '<C-_>', 'gcc', {})
-map('x', '<C-_>', 'gc', {})
+map('n', '<C-_>', 'gcc', { remap = true })
+map('x', '<C-_>', 'gc', { remap = true })
 -- }}}
 
 -----------Move lines----------- {{{
@@ -122,8 +125,8 @@ map('n', '<leader>es', ':UltiSnipsEdit<cr>', opts)
 -- }}}
 
 -----------Search direction----------- {{{
-map('n', 'n', '"Nn"[v:searchforward] . "zz"', exopts)
-map('n', 'N', '"nN"[v:searchforward] . "zz"', exopts)
+map('n', 'n', '"Nn"[v:searchforward] . "zz"', { silent = true, expr = true })
+map('n', 'N', '"nN"[v:searchforward] . "zz"', { silent = true, expr = true })
 -- }}}
 
 -----------Marks----------- {{{
