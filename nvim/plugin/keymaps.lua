@@ -51,8 +51,8 @@ map('t', '<Esc>', '<C-\\><C-N>', opts)
 --}}}
 
 -----------Quickfix and Location list----------- {{{
-map('n', ']c', ':cnext<cr>', opts)
-map('n', '[c', ':cprevious<cr>', opts)
+map('n', ']q', ':cnext<cr>', opts)
+map('n', '[q', ':cprevious<cr>', opts)
 
 map('n', ']l', ':lnext<cr>', opts)
 map('n', '[l', ':lprevious<cr>', opts)
