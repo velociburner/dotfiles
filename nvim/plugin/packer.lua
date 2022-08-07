@@ -10,7 +10,9 @@ return require('packer').startup(function(use)
   ---Making my life easier---
   use 'tpope/vim-surround'
   use 'tpope/vim-repeat'
-  use 'tpope/vim-commentary'
+  use { 'numToStr/Comment.nvim',
+    config = function() require('configs.comment') end
+  }
   use { 'windwp/nvim-autopairs',
     config = function() require('configs.autopairs') end
   }
