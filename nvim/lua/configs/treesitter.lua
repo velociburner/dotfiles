@@ -25,7 +25,6 @@ require('nvim-treesitter.configs').setup {
 
       keymaps = {
         -- You can use the capture groups defined in textobjects.scm
-        ['ik'] = '@block.inner',
         ['ak'] = '@block.outer',
         ['id'] = '@call.inner',
         ['ad'] = '@call.outer',
@@ -42,6 +41,9 @@ require('nvim-treesitter.configs').setup {
         ['io'] = '@loop.inner',
         ['ao'] = '@loop.outer',
         ['as'] = '@statement.outer',
+        ['ij'] = '@table.field',
+        ['ik'] = '@table.key',
+        ['iv'] = '@table.value'
       },
     },
     swap = {
