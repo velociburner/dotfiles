@@ -2,38 +2,40 @@ return require('packer').startup(function(use)
   ---Packer---
   use 'wbthomason/packer.nvim'
 
+  ---Color scheme---
+  use { 'navarasu/onedark.nvim',
+    config = function() require('configs.onedark') end
+  }
+
   ---Making my life easier---
   use 'tpope/vim-surround'
   use 'tpope/vim-repeat'
   use 'tpope/vim-commentary'
-  use { 'windwp/nvim-autopairs', config = require('configs.autopairs') }
-  use { 'ggandor/lightspeed.nvim', config = require('configs.lightspeed') }
+  use { 'windwp/nvim-autopairs',
+    config = function() require('configs.autopairs') end
+  }
+  use { 'ggandor/lightspeed.nvim',
+    config = function() require('configs.lightspeed') end
+  }
   use 'vim-scripts/ReplaceWithRegister'
-  use { 'preservim/nerdtree', cmd = {'NERDTree', 'NERDTreeToggle'} }
+  use { 'preservim/nerdtree',
+    cmd = {'NERDTree', 'NERDTreeToggle'}
+  }
 
-  ---Text Objects---
-  use 'michaeljsmith/vim-indent-object'
-  use 'wellle/targets.vim'
-  use { 'lukas-reineke/indent-blankline.nvim', config = require('configs.indentblankline') }
-
-  ---Snippets---
-  use 'SirVer/ultisnips'
-  use 'honza/vim-snippets'
-
-  ---Tags---
-  -- use 'ludovicchabant/vim-gutentags' -- must also install ctags separately
-
-  ---VimTex---
-  use { 'lervag/vimtex', ft = {'tex', 'bibtex'} }
+  ---LaTeX---
+  use { 'lervag/vimtex',
+    ft = {'tex', 'bibtex'}
+  }
 
   ---LSP---
-  -- use { 'neoclide/coc.nvim', branch = 'release' } -- requires nodejs and npm
-  use { 'neovim/nvim-lspconfig', config = require('configs.lspconfig') }
+  use { 'neovim/nvim-lspconfig',
+    config = function() require('configs.lspconfig') end
+  }
 
   ---Autocomplete---
   use {
     'hrsh7th/nvim-cmp',
-    config = require('configs.cmp'),
+    config = function() require('configs.cmp') end,
     requires = {
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-path',
@@ -43,23 +45,47 @@ return require('packer').startup(function(use)
   }
   use 'ray-x/lsp_signature.nvim'
 
+  ---Snippets---
+  use 'SirVer/ultisnips'
+  use 'honza/vim-snippets'
+
   ---Fuzzy finder---
   use 'nvim-lua/plenary.nvim'
-  use { 'nvim-telescope/telescope.nvim', config = require('configs.telescope') } -- requires ripgrep for live grep
+  use { 'nvim-telescope/telescope.nvim',
+    config = function() require('configs.telescope') end
+  }
 
   ---Git---
-  use { 'tanvirtin/vgit.nvim', config = require('configs.vgit') }
+  use { 'tanvirtin/vgit.nvim',
+    config = function() require('configs.vgit') end
+  }
 
   ---REPL---
   use 'jpalardy/vim-slime'
 
-  ---Style---
-  use { 'nvim-lualine/lualine.nvim', config = require('configs.lualine') }
-  use {'akinsho/bufferline.nvim', config = require('configs.bufferline'), requires = 'kyazdani42/nvim-web-devicons'}
-  use {"ellisonleao/gruvbox.nvim", requires = {"rktjmp/lush.nvim"}}
-  use 'folke/tokyonight.nvim'
-  use { 'navarasu/onedark.nvim', config = require('configs.onedark') }
-  use { 'nvim-treesitter/nvim-treesitter', config = require('configs.treesitter'), run = ':TSUpdate' }
+  ---Statusline---
+  use { 'nvim-lualine/lualine.nvim',
+    config = function() require('configs.lualine') end
+  }
+  use { 'akinsho/bufferline.nvim',
+    config = function() require('configs.bufferline') end,
+    requires = 'kyazdani42/nvim-web-devicons'
+  }
+
+  ---Text Objects---
+  use 'michaeljsmith/vim-indent-object'
+  use 'wellle/targets.vim'
+  use { 'lukas-reineke/indent-blankline.nvim',
+    config = function() require('configs.indentblankline') end
+  }
+
+  ---Treesitter---
+  use { 'nvim-treesitter/nvim-treesitter',
+    config = function() require('configs.treesitter') end,
+    run = ':TSUpdate'
+  }
   use 'nvim-treesitter/nvim-treesitter-textobjects'
-  use { 'nvim-treesitter/playground', cmd = 'TSPlaygroundToggle' }
+  use { 'nvim-treesitter/playground',
+    cmd = 'TSPlaygroundToggle'
+  }
 end)
