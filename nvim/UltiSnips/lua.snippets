@@ -4,6 +4,24 @@ local function ${1:name}(${2:args})
 end
 endsnippet
 
-snippet "([\w\d]+)\s*(\+|\-|\*|\/)= " "syntactic sugar for incrementing/decrementing" rbA
+snippet "([\w\d\.]+)\s*(\+|\-|\*|\/)= " "syntactic sugar for incrementing/decrementing" rbA
 `!p snip.rv = match.group(1)` = `!p snip.rv = match.group(1)` `!p snip.rv = match.group(2)` $0
+endsnippet
+
+snippet for "for" b
+for ${1:i} = ${2:1}, ${3:10, 1} do
+	${0:${VISUAL}}}
+end
+endsnippet
+
+snippet forp "for pairs" b
+for ${1:key}, ${2:val} in pairs(${3:t}) do
+	${0:${VISUAL}}
+end
+endsnippet
+
+snippet fori "for ipairs" b
+for ${1:idx}, ${2:val} in ipairs(${3:t}) do
+	${0:${VISUAL}}
+end
 endsnippet
