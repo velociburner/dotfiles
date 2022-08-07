@@ -20,7 +20,6 @@ cmp.setup({
     ['<CR>'] = cmp.mapping.confirm({ select = true }),
   },
   sources = cmp.config.sources({
-    { name = 'ultisnips', max_item_count = 3 },
     { name = 'nvim_lsp', max_item_count = 5 },
   },
   {
@@ -29,16 +28,6 @@ cmp.setup({
     { name = 'nvim_lua' }
   })
 })
-
--- Setup lspconfig.
-local nvim_lsp = require('lspconfig')
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-local servers = { 'pylsp', 'clangd', 'hls', 'sumneko_lua' }
-for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup {
-    capabilities = capabilities
-  }
-end
 
 -- If you want insert `(` after select function or method item
 cmp.event:on( 'confirm_done', require('nvim-autopairs.completion.cmp').on_confirm_done())
