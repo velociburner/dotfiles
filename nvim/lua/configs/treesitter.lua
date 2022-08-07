@@ -50,9 +50,11 @@ require('nvim-treesitter.configs').setup {
       enable = true,
       swap_next = {
         ['<leader>a'] = '@parameter.inner',
+        ['<leader>j'] = '@table.field'
       },
       swap_previous = {
         ['<leader>A'] = '@parameter.inner',
+        ['<leader>J'] = '@table.field'
       }
     },
     move = {
