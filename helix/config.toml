@@ -1,0 +1,14 @@
+theme = "onedark"
+
+[editor]
+mouse = false
+true-color = true
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[keys.normal]
+"\\" = { w = ":w", q = ":q" }
+"]" = { m = "goto_next_comment" }
