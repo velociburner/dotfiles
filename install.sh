@@ -6,7 +6,7 @@ set -o pipefail
 cd $(dirname $0)
 
 # dotfiles
-for fname in .[^.\(git\)]*; do
+for fname in .[^.g]*; do
     # if for some reason the file does not exist, skip it
     if [ ! -f ${fname} ]; then
         continue
