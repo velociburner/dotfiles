@@ -101,7 +101,7 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 Then run `:PlugInstall` in Vim to install packages.
 
 ### Neovim
-To get the latest version of Neovim, add the stable or unstable ppa. Only one version can be installed at a time.
+To get the latest version of [Neovim](https://github.com/neovim/neovim), add the stable or unstable ppa. Only one version can be installed at a time.
 
 To use the latest stable verion:
 ```
@@ -117,6 +117,20 @@ Then, update and install:
 ```
 sudo apt update
 sudo apt install neovim
+```
+
+You can also [build](https://github.com/neovim/neovim/wiki/Building-Neovim) it from source. First, install the [build prerequisites](https://github.com/neovim/neovim/wiki/Building-Neovim#build-prerequisites):
+```
+sudo apt install ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip curl doxygen
+```
+Then, clone the repository:
+```
+git clone https://github.com/neovim/neovim
+```
+Build and install:
+```
+make CMAKE_BUILD_TYPE=RelWithDebInfo
+sudo make install
 ```
 
 [Packer](https://github.com/wbthomason/packer.nvim)
