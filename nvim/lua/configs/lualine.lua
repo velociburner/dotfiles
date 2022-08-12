@@ -1,3 +1,10 @@
+local function custom_location()
+  local line_total = vim.api.nvim_buf_line_count(vim.fn.winbufnr(vim.g.statusline_winid))
+  local r, c = unpack(vim.api.nvim_win_get_cursor(0))
+  c = c + 1
+  return ':' .. r .. '/' .. line_total .. ' :' .. c
+end
+
 require('lualine').setup {
   options = {
     icons_enabled = true,
@@ -11,12 +18,11 @@ require('lualine').setup {
     lualine_b = {'branch', 'diff'},
     lualine_c = {'filename'},
     lualine_x = {
-      'encoding',
-      {'filetype', icon = ''}
+      'encoding', 'filetype'
     },
     lualine_y = {'progress'},
     lualine_z = {
-      'location()',
+      custom_location,
       {
         'diagnostics',
         sources = {'nvim_diagnostic'},
@@ -36,10 +42,3 @@ require('lualine').setup {
   tabline = {},
   extensions = {}
 }
-
-function location()
-  local line_total = vim.api.nvim_buf_line_count(vim.fn.winbufnr(vim.g.statusline_winid))
-  local r, c = unpack(vim.api.nvim_win_get_cursor(0))
-  c = c + 1
-  return ':' .. r .. '/' .. line_total .. ' :' .. c
-end
