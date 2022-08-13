@@ -175,6 +175,15 @@ project. The name of the directory should be added to the PATH in order for it t
 tar -xzf lua-language-server-XX.YY.ZZ-linux-x64.tar.gz -C lua-language-server
 ```
 
+#### Debug adapters
+[Here](https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation) is the information for downloading and
+configuring debuggers for neovim.
+
+[debugpy](https://github.com/microsoft/debugpy)
+```
+pip install debugpy
+```
+
 #### Telescope
 [ripgrep](https://github.com/BurntSushi/ripgrep)
 ```

@@ -23,6 +23,10 @@ return require('packer').startup(function(use)
 
   ---LSP---
   use { 'neovim/nvim-lspconfig', config = src_cfg('lspconfig') }
+  use { 'mfussenegger/nvim-dap', config = src_cfg('dap') }
+  use 'rcarriga/nvim-dap-ui'
+  use 'theHamsta/nvim-dap-virtual-text'
+  use 'mfussenegger/nvim-dap-python'
 
   ---Autocomplete---
   use {
