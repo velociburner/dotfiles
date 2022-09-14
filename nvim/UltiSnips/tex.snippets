@@ -85,6 +85,42 @@ ${0}
 \end{document}
 endsnippet
 
+snippet acl "Association for Computational Linguistics"
+\pdfoutput=1
+\documentclass[11pt]{article}
+\usepackage{acl}
+\usepackage{times}
+\usepackage{latexsym}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+
+\title{${1:Title}}
+\author{Josh Broderick Phillips}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+${3}
+\end{abstract}
+
+\section{Introduction}
+
+${0}
+
+% \section*{Acknowledgements}
+
+\bibliography{${2}}
+
+\appendix
+\section{Appendix}
+\label{sec:appendix}
+
+\end{document}
+endsnippet
+
 snippet math "math packages"
 \usepackage{amssymb, amsmath, amsthm}
 endsnippet
