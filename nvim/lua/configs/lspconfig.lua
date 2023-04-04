@@ -31,14 +31,14 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<localleader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   buf_set_keymap('n', '<localleader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
   buf_set_keymap('n', '<localleader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-  buf_set_keymap('x', '<localleader>ca', '<Esc><cmd>lua vim.lsp.buf.range_code_action()<CR>', opts)
+  buf_set_keymap('x', '<localleader>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   buf_set_keymap('n', '<localleader>gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
   buf_set_keymap('n', '<localleader>d', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
   buf_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
   buf_set_keymap('n', '<localleader>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
   buf_set_keymap('n', '<localleader>f', '<cmd>lua vim.lsp.buf.format({async = true})<CR>', opts)
-  buf_set_keymap('x', '<localleader>f', '<Esc><cmd>lua vim.lsp.buf.range_formatting()<CR>', opts)
+  buf_set_keymap('x', '<localleader>f', '<cmd>lua vim.lsp.buf.format({async = true})<CR>', opts)
 
   -- Don't clear the augroup so that a new one is defined for each buffer an
   -- LSP attaches to after it attaches
@@ -58,8 +58,8 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'pylsp', 'clangd', 'hls', 'sumneko_lua' }
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local servers = { 'pylsp', 'clangd', 'hls', 'lua_ls' }
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
@@ -70,6 +70,14 @@ for _, lsp in ipairs(servers) do
     -- Setup cmp lsp completion
     capabilities = capabilities,
     settings = {
+      pylsp = {
+        plugins = {
+          rope_autoimport = {
+            enabled = true,
+            memory = true,
+          },
+        },
+      },
       Lua = {
         runtime = {
           -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)

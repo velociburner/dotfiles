@@ -165,14 +165,23 @@ Then use `ghcup tui` to manage compiler and lsp versions.
 ```
 pip install "python-lsp-server[all]"
 pip install mypy pylsp-mypy
+pip install pylsp-rope
+pip install pyls-isort
 ```
 
-[sumneko_lua](https://github.com/sumneko/lua-language-server)
+[LuaLS](https://github.com/LuaLS/lua-language-server)
 
-Download the latest [release](https://github.com/sumneko/lua-language-server/releases) from GitHub and extract the
+Download the latest [release](https://github.com/LuaLS/lua-language-server/releases) from GitHub and extract the
 project. The name of the directory should be added to the PATH in order for it to connect to Neovim.
 ```
 tar -xzf lua-language-server-XX.YY.ZZ-linux-x64.tar.gz -C lua-language-server
+```
+
+Or build from source:
+```
+git clone https://github.com/LuaLS/lua-language-server
+cd lua-language-server
+./make.sh
 ```
 
 #### Debug adapters
