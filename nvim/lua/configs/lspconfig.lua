@@ -38,7 +38,8 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
   buf_set_keymap('n', '<localleader>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
   buf_set_keymap('n', '<localleader>f', '<cmd>lua vim.lsp.buf.format({async = true})<CR>', opts)
-  buf_set_keymap('x', '<localleader>f', '<cmd>lua vim.lsp.buf.format({async = true})<CR>', opts)
+  buf_set_keymap('v', '<localleader>f', '<cmd>lua vim.lsp.buf.format({async = true})<CR>', opts)
+  -- buf_set_keymap('x', '<localleader>f', '<cmd>lua vim.lsp.buf.format({async = true, range = { ["start"] = vim.api.nvim_buf_get_mark(0, "<"), ["end"] = vim.api.nvim_buf_get_mark(0, ">"), }})<CR>', opts)
 
   -- Don't clear the augroup so that a new one is defined for each buffer an
   -- LSP attaches to after it attaches
@@ -72,9 +73,8 @@ for _, lsp in ipairs(servers) do
     settings = {
       pylsp = {
         plugins = {
-          rope_autoimport = {
-            enabled = true,
-            memory = true,
+          autopep8 = {
+            enabled = false,
           },
         },
       },
@@ -92,6 +92,9 @@ for _, lsp in ipairs(servers) do
           enable = false,
         },
       }
+    },
+    experimental = {
+      ghost_text = true,
     }
   }
 end
