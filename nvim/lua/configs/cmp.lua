@@ -1,10 +1,11 @@
 local cmp = require('cmp')
 
 cmp.setup({
-  -- enabled = function ()
-  --   -- disable completion if the cursor is `Comment` syntax group.
-  --   return not cmp.config.context.in_syntax_group('Comment')
-  -- end,
+  enabled = function ()
+    -- disable completion if the cursor is in a comment
+    local context = require("cmp.config.context")
+    return not context.in_syntax_group('Comment') and not context.in_treesitter_capture('comment')
+  end,
   snippet = {
     expand = function(args)
       vim.fn["UltiSnips#Anon"](args.body)
