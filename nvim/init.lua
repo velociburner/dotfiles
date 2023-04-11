@@ -1,5 +1,21 @@
 -- https://vonheikemen.github.io/devlog/tools/configuring-neovim-using-lua/
 
+-----------Lazy----------- {{{
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+require('lazy').setup('configs.lazy')
+-- }}}
+
 -----------General----------- {{{
 vim.opt.number = true
 vim.opt.showcmd = false
@@ -62,7 +78,6 @@ vim.opt.listchars = {trail = '«'}
 
 -----------Snippets----------- {{{
 vim.g.UltiSnipsEnableSnipMate = 0
-vim.opt.runtimepath:prepend('~/.local/share/nvim/site/pack/packer/start/vim-snippets')
 -- }}}
 
 -----------NERDTree----------- {{{
