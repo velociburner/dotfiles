@@ -26,7 +26,8 @@ map('n', '<leader>fk', '<cmd>Telescope keymaps<cr>', opts)
 -- Treesitter outline
 map('n', '<leader>ft', '<cmd>Telescope treesitter<cr>', opts)
 
--- LSP diagnostics
-map('n', '<leader>fl', '<cmd>Telescope lsp_document_diagnostics<cr>', opts)
+-- LSP
+map('n', '<leader>fd', '<cmd>Telescope diagnostics<cr>', opts)
+map('n', '<leader>fs', '<cmd>Telescope lsp_document_symbols<cr>', opts)
 
 return M
