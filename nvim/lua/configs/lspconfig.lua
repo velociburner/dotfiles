@@ -54,7 +54,6 @@ local on_attach = function(client, bufnr)
     buffer = bufnr,
     command = "lua vim.lsp.buf.clear_references()"
   })
-  client.server_capabilities.semanticTokensProvider = nil
 
 end
 
