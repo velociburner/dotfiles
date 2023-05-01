@@ -82,4 +82,9 @@ return {
       { 'nvim-treesitter/playground', cmd = 'TSPlaygroundToggle' }
     }
   },
+  { 'ckolkey/ts-node-action', config = src_cfg('ts-node-action'),
+    dependencies = { 'nvim-treesitter' },
+    cmd = { 'NodeAction', 'NodeActionDebug' },
+    keys = { '<leader>a' }
+  },
 }
