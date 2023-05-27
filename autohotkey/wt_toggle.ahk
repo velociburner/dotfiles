@@ -1,9 +1,9 @@
-SwitchToWindowsTerminal()
+SwitchToWezTerm()
 {
-  windowHandleId := WinExist("ahk_exe WindowsTerminal.exe")
+  windowHandleId := WinExist("ahk_exe wezterm-gui.exe")
   windowExistsAlready := windowHandleId > 0
 
-  ; If the Windows Terminal is already open, determine if we should put it in focus or minimize it.
+  ; If WezTerm is already open, determine if we should put it in focus or minimize it.
   if (windowExistsAlready = true)
   {
     activeWindowHandleId := WinExist("A")
@@ -24,10 +24,9 @@ SwitchToWindowsTerminal()
   ; Else it's not already open, so launch it.
   else
   {
-    Run, wt
+    Run, "wezterm"
   }
 }
 
-; Hotkey to use Ctrl+Shift+C to launch/restore the Windows Terminal.
-; ^+c::SwitchToWindowsTerminal()
-F12::SwitchToWindowsTerminal()
+; Hotkey to use F12 to launch/restore WezTerm.
+F12::SwitchToWezTerm()
