@@ -124,7 +124,8 @@ map('x', '<leader>Y', '"*Y', opts)
 map('n', '<leader>es', ':UltiSnipsEdit<cr>', opts)
 -- }}}
 
------------Search direction----------- {{{
+-----------Search----------- {{{
+map('n', '<space>s', ':set hlsearch!<cr>', opts)
 map('n', 'n', '"Nn"[v:searchforward] . "zz"', { silent = true, expr = true })
 map('n', 'N', '"nN"[v:searchforward] . "zz"', { silent = true, expr = true })
 -- }}}

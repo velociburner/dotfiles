@@ -18,7 +18,7 @@ require('lualine').setup {
     lualine_b = {'branch', 'diff'},
     lualine_c = {'filename'},
     lualine_x = {
-      'encoding', 'filetype'
+      'searchcount', 'encoding', 'filetype'
     },
     lualine_y = {'progress'},
     lualine_z = {

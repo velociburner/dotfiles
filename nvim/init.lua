@@ -20,6 +20,7 @@ require('lazy').setup('configs.lazy')
 vim.opt.number = true
 vim.opt.showcmd = false
 vim.wo.signcolumn = 'yes'
+vim.o.cmdheight = 0
 vim.opt.errorbells = false
 vim.opt.ttimeoutlen = 5
 
@@ -73,7 +74,7 @@ vim.opt.shiftround = true
 vim.opt.expandtab = true
 
 vim.opt.list = true
-vim.opt.listchars = {trail = '«'}
+vim.opt.listchars = {trail = '«', tab = '>-'}
 -- }}}
 
 -----------Snippets----------- {{{
