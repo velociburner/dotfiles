@@ -5,6 +5,15 @@ local function custom_location()
   return ':' .. r .. '/' .. line_total .. ' :' .. c
 end
 
+local function macro_recording()
+  local reg_name = vim.fn.reg_recording()
+  if reg_name ~= "" then
+    return string.format("recording @%s", reg_name)
+  else
+    return ""
+  end
+end
+
 require('lualine').setup {
   options = {
     icons_enabled = true,
@@ -16,7 +25,7 @@ require('lualine').setup {
   sections = {
     lualine_a = {'mode'},
     lualine_b = {'branch', 'diff'},
-    lualine_c = {'filename'},
+    lualine_c = {'filename', macro_recording},
     lualine_x = {
       'searchcount', 'encoding', 'filetype'
     },
