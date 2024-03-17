@@ -8,7 +8,7 @@ if status is-interactive
     if test -d ~/lua-language-server/bin
         set -gx PATH ~/lua-language-server/bin $PATH
     end
-    set -gx EDITOR "nvim"
+    set -gx EDITOR "nv"
 
     # vi mode
     set fish_vi_force_cursor 1
