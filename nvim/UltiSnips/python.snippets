@@ -40,3 +40,39 @@ snippet witho "with open" b
 with open("${1:filename}", '${2:r}', encoding='utf8') as f:
 	${3:${VISUAL:pass}}
 endsnippet
+
+snippet withop "with open for Path objects" b
+with ${1:path}.open('${2:r}', encoding='utf8') as f:
+	${3:${VISUAL:pass}}
+endsnippet
+
+snippet path "pathlib" b
+from pathlib import Path
+endsnippet
+
+snippet args "argparse command line arguments" bm
+import argparse
+
+parser = argparse.ArgumentParser(
+	formatter_class=argparse.ArgumentDefaultsHelpFormatter,
+	description=__doc__
+)
+
+parser.add_argument(
+	'${1:name}',
+	type=${2:str},
+	help="${3:Help string}"
+)$4
+
+args = parser.parse_args()
+
+main(args.`!p snip.rv = t[1].lstrip("-")`$5)
+endsnippet
+
+snippet arg "argparse argument" b
+parser.add_argument(
+	'${1:name}',
+	type=${2:str},
+	help="${3:Help string}"
+)
+endsnippet
