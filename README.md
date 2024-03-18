@@ -54,6 +54,11 @@ Symlink so you can run from the command line with `luajit`:
 sudo ln -sf luajit-XX.YY.ZZ-betaW /usr/local/bin/luajit
 ```
 
+### Terminal
+[WezTerm](https://wezfurlong.org/wezterm/index.html)
+
+Download and install the appropriate version from the [Download](https://wezfurlong.org/wezterm/installation.html) page.
+
 ### Shells
 [Zsh](https://www.zsh.org/)
 ```
@@ -101,23 +106,8 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 Then run `:PlugInstall` in Vim to install packages.
 
 ### Neovim
-To get the latest version of [Neovim](https://github.com/neovim/neovim), add the stable or unstable ppa. Only one version can be installed at a time.
-
-To use the latest stable verion:
-```
-sudo add-apt-repository ppa:neovim-ppa/stable
-```
-
-To use the latest unstable version:
-```
-sudo add-apt-repository ppa:neovim-ppa/unstable
-```
-
-Then, update and install:
-```
-sudo apt update
-sudo apt install neovim
-```
+To get the latest version of [Neovim](https://github.com/neovim/neovim), download the release from the [releases](https://github.com/neovim/neovim/releases) page.
+Use latest stable release (v0.9.5) for compatibility with configs.
 
 You can also [build](https://github.com/neovim/neovim/wiki/Building-Neovim) it from source. First, install the [build prerequisites](https://github.com/neovim/neovim/wiki/Building-Neovim#build-prerequisites):
 ```
@@ -132,13 +122,6 @@ Build and install:
 make CMAKE_BUILD_TYPE=RelWithDebInfo
 sudo make install
 ```
-
-[Packer](https://github.com/wbthomason/packer.nvim)
-```
-git clone --depth 1 https://github.com/wbthomason/packer.nvim\
- ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-```
-Then run `:PackerInstall` in Neovim to install packages.
 
 #### Python
 Install pynvim package into a python version on the PATH.
