@@ -2,7 +2,6 @@ local map = vim.keymap.set
 local opts = { silent = true }
 
 -----------Basic----------- {{{
-vim.g.maplocalleader = ','
 map('n', ';', ':', {})
 map('x', ';', ':', {})
 map('x', '.', ':norm! .<cr>', opts)

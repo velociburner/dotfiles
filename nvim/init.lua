@@ -1,5 +1,7 @@
 -- https://vonheikemen.github.io/devlog/tools/configuring-neovim-using-lua/
 
+vim.g.maplocalleader = ','
+
 -----------Lazy----------- {{{
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then

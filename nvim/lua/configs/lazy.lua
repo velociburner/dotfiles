@@ -71,7 +71,7 @@ return {
   ---Text Objects---
   'michaeljsmith/vim-indent-object',
   'wellle/targets.vim',
-  { 'lukas-reineke/indent-blankline.nvim', config = src_cfg('indentblankline') },
+  { 'lukas-reineke/indent-blankline.nvim', main = "ibl", config = src_cfg('indentblankline') },
 
   ---Treesitter---
   { 'nvim-treesitter/nvim-treesitter', config = src_cfg('treesitter'),
