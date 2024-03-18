@@ -25,6 +25,7 @@ return {
     'neovim/nvim-lspconfig', config = src_cfg('lspconfig'),
     event = { 'BufReadPre', 'BufNewFile' }
   },
+  { 'nvimdev/lspsaga.nvim', config = src_cfg('lspsaga') },
   {
     'mfussenegger/nvim-dap', config = src_cfg('dap'),
     cmd = { 'DapContinue', 'DapToggleBreakpoint' },
