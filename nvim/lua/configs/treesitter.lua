@@ -27,6 +27,10 @@ require('nvim-treesitter.configs').setup {
         -- You can use the capture groups defined in textobjects.scm
         ['iA'] = '@attribute.inner',
         ['aA'] = '@attribute.outer',
+        ['iT'] = '@type.inner',
+        ['iR'] = '@return_type.inner',
+        ['ir'] = '@return.inner',
+        ['ar'] = '@return.outer',
         ['ak'] = '@block.outer',
         ['id'] = '@call.inner',
         ['ad'] = '@call.outer',
