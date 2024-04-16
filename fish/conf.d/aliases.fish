@@ -15,6 +15,7 @@ alias gbs="git bisect"
 alias gcm="git commit -m"
 alias gcd=cd_git_root
 alias gco="git checkout"
+alias gcob="git checkout -b"
 alias gd="git diff"
 alias gf="git fetch"
 alias gl="git pull"
@@ -29,6 +30,8 @@ alias gra="git remote add"
 alias grs="git restore"
 alias grst="git restore --staged"
 alias gst="git status"
+alias gfix="git commit --amend --no-edit"
+alias goops="git reset HEAD~1 --soft"
 
 # tmux
 alias ta="tmux attach -t"
