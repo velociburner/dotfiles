@@ -47,3 +47,4 @@ alias zh='z -I -t .' # access MRU directories interactively
 alias saud="sudo apt update"
 alias saug="sudo apt upgrade"
 alias alu="apt list --upgradable"
+alias mkcd=mkdir_and_cd

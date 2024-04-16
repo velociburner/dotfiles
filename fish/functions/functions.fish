@@ -6,3 +6,16 @@ function cd_git_root -d "Set CWD as root of current git repo"
         echo "Not a git repo!"
     end
 end
+
+function mkdir_and_cd -d "Create a directory and set CWD"
+    command mkdir $argv
+    if test $status = 0
+        switch $argv[(count $argv)]
+            case '-*'
+
+            case '*'
+                cd $argv[(count $argv)]
+                return
+        end
+    end
+end
