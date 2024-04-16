@@ -92,6 +92,8 @@ map('n', '(', 'F(', opts)
 -----------Comments----------- {{{
 map('n', '<C-_>', 'gcc', { remap = true })
 map('x', '<C-_>', 'gc', { remap = true })
+map('n', '<C-/>', 'gcc', { remap = true })
+map('x', '<C-/>', 'gc', { remap = true })
 -- }}}
 
 -----------Move lines----------- {{{
