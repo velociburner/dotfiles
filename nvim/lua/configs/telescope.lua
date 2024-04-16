@@ -30,4 +30,9 @@ map('n', '<leader>ft', '<cmd>Telescope treesitter<cr>', opts)
 map('n', '<leader>fd', '<cmd>Telescope diagnostics<cr>', opts)
 map('n', '<leader>fs', '<cmd>Telescope lsp_document_symbols<cr>', opts)
 
+-- File browser
+map("n", "<leader>fl", function()
+  require("telescope").extensions.file_browser.file_browser()
+end)
+
 return M

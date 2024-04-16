@@ -15,7 +15,6 @@ return {
   { 'windwp/nvim-autopairs', config = src_cfg('autopairs') },
   { 'ggandor/lightspeed.nvim', config = src_cfg('lightspeed') },
   'vim-scripts/ReplaceWithRegister',
-  { 'preservim/nerdtree', cmd = {'NERDTree', 'NERDTreeToggle'} },
 
   ---LaTeX---
   { 'lervag/vimtex', ft = {'tex', 'bibtex'} },
@@ -56,6 +55,7 @@ return {
   ---Fuzzy finder---
   'nvim-lua/plenary.nvim',
   { 'nvim-telescope/telescope.nvim', config = src_cfg('telescope') },
+  { 'nvim-telescope/telescope-file-browser.nvim' },
 
   ---Git---
   { 'tanvirtin/vgit.nvim', config = src_cfg('vgit') },
