@@ -29,12 +29,15 @@ cmp.setup({
   {
     { name = 'buffer', max_item_count = 5, keyword_length = 4 },
     { name = 'path', max_item_count = 5 },
-    { name = 'nvim_lua' }
+    { name = 'nvim_lua' },
+    { name = 'git' }
   }),
   experimental = {
     ghost_text = true,
   }
 })
+
+require('cmp_git').setup()
 
 -- If you want insert `(` after select function or method item
 cmp.event:on( 'confirm_done', require('nvim-autopairs.completion.cmp').on_confirm_done())

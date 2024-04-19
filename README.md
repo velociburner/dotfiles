@@ -194,12 +194,23 @@ sudo apt install zathura
 sudo apt install latexmk
 ```
 
-### Git
+### Git/GitHub
 To get the latest stable upstream version of [Git](https://git-scm.com/download/linux) on Ubuntu, add the ppa and then update and install:
 ```
 sudo add-apt-repository ppa:git-core/ppa
 sudo apt update
 sudo apt install git
+```
+
+Install [GitHub CLI](https://cli.github.com/):
+```
+chmod u+x install_gh.sh
+./install_gh.sh
+```
+
+Set up the authentication by running the command and following the directions:
+```
+gh auth login
 ```
 
 ### Tmux

@@ -43,7 +43,8 @@ return {
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-buffer',
-      'hrsh7th/cmp-nvim-lua'
+      'hrsh7th/cmp-nvim-lua',
+      'petertriho/cmp-git'
     }
   },
   'ray-x/lsp_signature.nvim',
@@ -57,8 +58,10 @@ return {
   { 'nvim-telescope/telescope.nvim', config = src_cfg('telescope') },
   { 'nvim-telescope/telescope-file-browser.nvim' },
 
-  ---Git---
-  { 'tanvirtin/vgit.nvim', config = src_cfg('vgit') },
+  ---Git/GitHub---
+  { 'lewis6991/gitsigns.nvim', config = src_cfg('gitsigns') },
+  'sindrets/diffview.nvim',
+  { 'pwntester/octo.nvim', config = src_cfg('octo') },
 
   ---REPL---
   'jpalardy/vim-slime',
