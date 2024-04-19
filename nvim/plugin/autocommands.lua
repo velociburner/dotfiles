@@ -21,3 +21,9 @@ vim.api.nvim_create_autocmd("CmdLineLeave", {
   pattern = {"/", "\\?"},
   command = "set nohlsearch"
 })
+
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+  pattern = "*.jsonl",
+  group = vim.api.nvim_create_augroup("CustomFiletype", { clear = true }),
+  command = "setfiletype json",
+})
