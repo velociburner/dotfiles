@@ -60,7 +60,7 @@ return {
 
   ---Git/GitHub---
   { 'lewis6991/gitsigns.nvim', config = src_cfg('gitsigns') },
-  'sindrets/diffview.nvim',
+  { 'sindrets/diffview.nvim', config = src_cfg('diffview') },
   { 'pwntester/octo.nvim', config = src_cfg('octo') },
 
   ---REPL---
