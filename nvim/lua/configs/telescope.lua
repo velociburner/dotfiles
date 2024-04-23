@@ -1,6 +1,31 @@
 local map = vim.keymap.set
 local opts = { silent = true }
 
+require('telescope').setup({
+  pickers = {
+    buffers = {
+      theme = 'dropdown',
+      previewer = false,
+      sort_lastused = true,
+      sort_mru = true
+    },
+    treesitter = {
+      theme = 'dropdown'
+    },
+    diagnostics = {
+      theme = 'dropdown'
+    },
+    lsp_document_symbols = {
+      theme = 'dropdown'
+    }
+  },
+  extensions = {
+    file_browser = {
+      theme = 'ivy'
+    }
+  }
+})
+
 local M = {}
 local tb = require('telescope.builtin')
 function M.project_files()
@@ -31,8 +56,6 @@ map('n', '<leader>fd', '<cmd>Telescope diagnostics<cr>', opts)
 map('n', '<leader>fs', '<cmd>Telescope lsp_document_symbols<cr>', opts)
 
 -- File browser
-map("n", "<leader>fl", function()
-  require("telescope").extensions.file_browser.file_browser()
-end)
+map("n", "<leader>fl", '<cmd>Telescope file_browser<cr>', opts)
 
 return M
