@@ -81,7 +81,11 @@ return {
   { 'nvim-treesitter/nvim-treesitter', config = src_cfg('treesitter'),
     build = ':TSUpdate',
     dependencies = {
-      'nvim-treesitter/nvim-treesitter-context',
+      { 'nvim-treesitter/nvim-treesitter-context',
+        keys = {
+          { '<leader>tt', '<cmd>TSContextToggle<cr>' }
+        }
+      },
       'nvim-treesitter/nvim-treesitter-textobjects',
       { 'nvim-treesitter/playground', cmd = 'TSPlaygroundToggle' }
     }
